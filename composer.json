@@ -1,0 +1,30 @@
+{
+  "name": "engineered/sprykerphpbridgegacela",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "ray.lawlor",
+      "email": "ray.lawlor@veriteer.com"
+    }
+  ],
+  "require": {
+    "gacela-project/gacela": "^0.27.0",
+    "symfony/console": "^5",
+    "symfony/http-client": "^6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Engineered\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
