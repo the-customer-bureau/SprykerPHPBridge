@@ -16,4 +16,9 @@ final class CollectionsFacade extends AbstractFacade
 	{
 		return $this->getFactory()->createCategoryTrees()->get();
 	}
+
+	public function searchAbstractProducts(string $searchTerm): array
+	{
+		return $this->getFactory()->createAbstractProducts()->get($searchTerm);
+	}
 }

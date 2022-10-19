@@ -10,4 +10,6 @@ $sprykerBridge = new SprykerBridgeFacade();
 
 Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
 
-echo json_encode($sprykerBridge->getCategoryTrees());
+//echo json_encode($sprykerBridge->getCategoryTrees());
+$result = $sprykerBridge->searchAbstractProducts('toshiba');
+echo json_encode($result);

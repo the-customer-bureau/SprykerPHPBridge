@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\Collections;
 
+use Engineered\Collections\Domain\AbstractProducts;
 use Engineered\Collections\Domain\CategoryTrees;
 use Engineered\Shared\SharedFacade;
 use Gacela\Framework\AbstractFactory;
@@ -17,6 +18,15 @@ final class CollectionsFactory extends AbstractFactory
 	public function createCategoryTrees(): CategoryTrees
 	{
 		return new CategoryTrees(
+			$this->getHttpClient(),
+			$this->getConfig()->getGlueUrl()
+		);
+	}
+
+
+	public function createAbstractProducts(): AbstractProducts
+	{
+		return new AbstractProducts(
 			$this->getHttpClient(),
 			$this->getConfig()->getGlueUrl()
 		);

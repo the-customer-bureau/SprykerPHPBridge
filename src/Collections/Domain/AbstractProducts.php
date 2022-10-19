@@ -5,7 +5,7 @@ namespace Engineered\Collections\Domain;
 
 use Engineered\Shared\SharedFacade;
 
-class CategoryTrees
+class AbstractProducts
 {
 
 
@@ -17,9 +17,9 @@ class CategoryTrees
 	}
 
 
-	public function get(): array
+	public function get(string $searchTerm): array
 	{
-		return $this->httpClient->getHttpClient()->request('GET', $this->glueApiUrl . '/category-trees')->toArray();
+		return $this->httpClient->getHttpClient()->request('GET', $this->glueApiUrl . '/catalog-search?q='. $searchTerm)->toArray();
 	}
 
 

@@ -17,6 +17,11 @@ final class SprykerBridgeFacade extends AbstractFacade
 		return $this->getFactory()->getCollectionsFacade()->getCategoryTrees();
 	}
 
+	public function searchAbstractProducts(string $searchTerm): array
+	{
+		return $this->getFactory()->getCollectionsFacade()->searchAbstractProducts($searchTerm);
+	}
+
 
 
 }
