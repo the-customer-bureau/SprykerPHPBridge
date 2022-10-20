@@ -29,9 +29,9 @@ final class SprykerBridgeFacade extends AbstractFacade
 		return $this->getFactory()->getAuthFacade()->getAccessToken($username, $password, $returnAttribute);
 	}
 
-	public function refreshTokens(string $refreshToken): array
+	public function refreshTokens(string $refreshToken, string $returnAttribute = null): array|string
 	{
-		return $this->getFactory()->getAuthFacade()->refreshTokens($refreshToken);
+		return $this->getFactory()->getAuthFacade()->refreshTokens($refreshToken, $returnAttribute);
 	}
 
 

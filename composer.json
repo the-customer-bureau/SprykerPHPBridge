@@ -10,6 +10,7 @@
     }
   ],
   "require": {
+    "php": "8.1",
     "gacela-project/gacela": "^0.27.0",
     "symfony/console": "^5",
     "symfony/http-client": "^6"

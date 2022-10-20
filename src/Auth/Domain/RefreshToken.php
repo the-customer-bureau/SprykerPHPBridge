@@ -16,9 +16,19 @@ class RefreshToken
 	{
 	}
 
-	public function refresh(string $refreshToken): array
+	public function refresh(string $refreshToken, string $returnAttribute = null): array|string
 	{
-		return $this->httpClient->post(self::REFRESH_TOKEN_ENDPOINT, $this->getPayload($refreshToken));
+		$response = $this->httpClient->post(self::REFRESH_TOKEN_ENDPOINT, $this->getPayload($refreshToken));
+
+
+		if (!$returnAttribute)
+		{
+			return $response;
+		}
+
+		return $response['data']['attributes'][$returnAttribute];
+
+
 	}
 
 
