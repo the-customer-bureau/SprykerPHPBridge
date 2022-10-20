@@ -3,7 +3,7 @@
 
 namespace Engineered\Collections\Domain;
 
-use Engineered\HttpClient\HttpClientFacade;
+use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class CategoryTrees
 {
@@ -12,7 +12,7 @@ class CategoryTrees
 
 
 	public function __construct(
-		public readonly HttpClientFacade $httpClient,
+		public readonly HttpClientFacadeInterface $httpClient,
 	)
 	{
 	}

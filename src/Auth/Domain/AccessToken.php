@@ -2,7 +2,8 @@
 
 namespace Engineered\Auth\Domain;
 
-use Engineered\HttpClient\HttpClientFacade;
+
+use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class AccessToken
 {
@@ -12,7 +13,7 @@ class AccessToken
 
 
 	public function __construct(
-		public readonly HttpClientFacade $httpClient,
+		public readonly HttpClientFacadeInterface $httpClient,
 	)
 	{
 	}

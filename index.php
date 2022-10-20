@@ -12,11 +12,12 @@ Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
 
 //$result = $sprykerBridge->getCategoryTrees();
 //$result = $sprykerBridge->searchAbstractProducts('toshiba');
-$result = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123');
-echo json_encode($result['data']['attributes']['refreshToken']);
+//$result = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123');
+//echo json_encode($result['data']['attributes']['refreshToken']);
+//
+//$result = $sprykerBridge->refreshTokens($result['data']['attributes']['refreshToken']);
 
-$result = $sprykerBridge->refreshTokens($result['data']['attributes']['refreshToken']);
 
-
+$result = $sprykerBridge->addToGuestCart('206_6429825', '111-222-333', 4);
 
 echo json_encode($result);

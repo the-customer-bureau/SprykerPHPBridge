@@ -2,7 +2,7 @@
 
 namespace Engineered\Auth\Domain;
 
-use Engineered\HttpClient\HttpClientFacade;
+use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class RefreshToken
 {
@@ -11,7 +11,7 @@ class RefreshToken
 
 
 	public function __construct(
-		public readonly HttpClientFacade $httpClient,
+		public readonly HttpClientFacadeInterface $httpClient,
 	)
 	{
 	}

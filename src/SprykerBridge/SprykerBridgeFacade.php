@@ -32,5 +32,10 @@ final class SprykerBridgeFacade extends AbstractFacade
 		return $this->getFactory()->getAuthFacade()->refreshTokens($refreshToken);
 	}
 
+	public function addToGuestCart(string $concreteSku, string $customerUniqueId, int $quantity = 1, string $id = null): array
+	{
+		return $this->getFactory()->getCartFacade()->addToGuestCart($concreteSku, $quantity, $customerUniqueId, $id);
+
+	}
 
 }

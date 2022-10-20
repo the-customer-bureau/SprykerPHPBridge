@@ -3,7 +3,7 @@
 
 namespace Engineered\Collections\Domain;
 
-use Engineered\HttpClient\HttpClientFacade;
+use Engineered\HttpClient\HttpClientFacadeInterface;
 
 
 class AbstractProducts
@@ -13,7 +13,7 @@ class AbstractProducts
 
 
 	public function __construct(
-		public HttpClientFacade $httpClient
+		public HttpClientFacadeInterface $httpClient
 	)
 	{
 	}

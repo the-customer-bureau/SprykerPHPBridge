@@ -9,7 +9,7 @@ use Gacela\Framework\AbstractFacade;
 /**
  * @method HttpClientFactory getFactory()
  */
-final class HttpClientFacade extends AbstractFacade
+final class HttpClientFacade extends AbstractFacade implements HttpClientFacadeInterface
 {
 
 	public function get(string $endpoint): array
@@ -22,7 +22,7 @@ final class HttpClientFacade extends AbstractFacade
 		return $this->getFactory()->createClient()->getProtected($endpoint, $bearerToken);
 	}
 
-	public function post(string $endpoint, array $payload, string $headers = null, string $bearerToken = null): array
+	public function post(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array
 	{
 
 		return $this->getFactory()->createClient()->post($endpoint, $payload, $headers, $bearerToken);

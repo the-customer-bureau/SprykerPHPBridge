@@ -34,7 +34,7 @@ class HttpClient
 	}
 
 
-	public function post(string $endpoint, array $payload, string $headers = null, string $bearerToken = null): array
+	public function post(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array
 	{
 
 		return $this->client->request('POST', $this->glueApiUrl . '/' . $endpoint,
