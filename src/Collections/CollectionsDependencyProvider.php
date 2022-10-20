@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Engineered\Collections;
 
-use Engineered\Shared\SharedFacade;
+use Engineered\HttpClient\HttpClientFacade;
 use Gacela\Framework\AbstractDependencyProvider;
 use Gacela\Framework\Container\Container;
 
 final class CollectionsDependencyProvider extends AbstractDependencyProvider
 {
 
-	public const FACADE_SHARED = 'FACADE_SHARED';
+	public const FACADE_HTTP_CLIENT = 'FACADE_HTTP_CLIENT';
 
     public function provideModuleDependencies(Container $container): void
     {
@@ -20,9 +20,9 @@ final class CollectionsDependencyProvider extends AbstractDependencyProvider
 
 	private function addSharedFacade(Container $container) {
 		$container->set(
-			self::FACADE_SHARED,
+			self::FACADE_HTTP_CLIENT,
 			function (Container $container) {
-				return $container->getLocator()->get(SharedFacade::class);
+				return $container->getLocator()->get(HttpClientFacade::class);
 			}
 		);
 	}

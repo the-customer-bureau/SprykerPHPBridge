@@ -3,15 +3,15 @@
 
 namespace Engineered\Collections\Domain;
 
-use Engineered\Shared\SharedFacade;
+use Engineered\HttpClient\HttpClientFacade;
+
 
 class AbstractProducts
 {
 
 
 	public function __construct(
-		public SharedFacade $httpClient,
-		public string       $glueApiUrl
+		public HttpClientFacade $httpClient
 	)
 	{
 	}
@@ -19,7 +19,8 @@ class AbstractProducts
 
 	public function get(string $searchTerm): array
 	{
-		return $this->httpClient->getHttpClient()->request('GET', $this->glueApiUrl . '/catalog-search?q='. $searchTerm)->toArray();
+		return [];
+//		return $this->httpClient->getHttpClient()->request('GET', $this->glueApiUrl . '/catalog-search?q='. $searchTerm)->toArray();
 	}
 
 

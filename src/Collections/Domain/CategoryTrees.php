@@ -3,15 +3,16 @@
 
 namespace Engineered\Collections\Domain;
 
-use Engineered\Shared\SharedFacade;
+use Engineered\HttpClient\HttpClientFacade;
 
 class CategoryTrees
 {
 
+	public const CATEGORY_TREES_ENDPOINT = '/category-trees';
+
 
 	public function __construct(
-		public SharedFacade $httpClient,
-		public string       $glueApiUrl
+		public readonly HttpClientFacade $httpClient,
 	)
 	{
 	}
@@ -19,7 +20,7 @@ class CategoryTrees
 
 	public function get(): array
 	{
-		return $this->httpClient->getHttpClient()->request('GET', $this->glueApiUrl . '/category-trees')->toArray();
+		return $this->httpClient->get(self::CATEGORY_TREES_ENDPOINT);
 	}
 
 
