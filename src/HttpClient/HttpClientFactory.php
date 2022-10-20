@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\HttpClient;
 
-use Engineered\HttpClient\Client\httpClient;
+use Engineered\HttpClient\Client\HttpClient;
 use Gacela\Framework\AbstractFactory;
 use Symfony\Component\HttpClient\NativeHttpClient;
 
@@ -14,9 +14,9 @@ use Symfony\Component\HttpClient\NativeHttpClient;
 final class HttpClientFactory extends AbstractFactory
 {
 
-	public function createClient(): httpClient
+	public function createClient(): HttpClient
 	{
-		return new httpClient(
+		return new HttpClient(
 			new NativeHttpClient(),
 			$this->getConfig()->getGlueUrl()
 		);

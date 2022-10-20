@@ -4,7 +4,7 @@ namespace Engineered\HttpClient\Client;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class httpClient
+class HttpClient
 {
 
 	public function __construct(
@@ -34,7 +34,7 @@ class httpClient
 	}
 
 
-	public function post(string $endpoint,  string $headers, string $bearerToken, array $payload): array
+	public function post(string $endpoint, array $payload, string $headers = null, string $bearerToken = null): array
 	{
 
 		return $this->client->request('POST', $this->glueApiUrl . '/' . $endpoint,

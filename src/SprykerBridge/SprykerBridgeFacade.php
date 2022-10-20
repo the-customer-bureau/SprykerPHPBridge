@@ -22,6 +22,10 @@ final class SprykerBridgeFacade extends AbstractFacade
 		return $this->getFactory()->getCollectionsFacade()->searchAbstractProducts($searchTerm);
 	}
 
+	public function getAccessToken(string $username, string $password): array
+	{
+		return $this->getFactory()->getAuthFacade()->getAccessTokenArray($username, $password);
+	}
 
 
 }

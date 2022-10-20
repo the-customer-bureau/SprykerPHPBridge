@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\SprykerBridge;
 
+use Engineered\Auth\AuthFacade;
 use Engineered\Collections\CollectionsFacade;
 
 use Gacela\Framework\AbstractFactory;
@@ -18,6 +19,14 @@ final class SprykerBridgeFactory extends AbstractFactory
 	{
 		return $this->getProvidedDependency(
 			SprykerBridgeDependencyProvider::FACADE_COLLECTIONS
+		);
+	}
+
+
+	public function getAuthFacade(): AuthFacade
+	{
+		return $this->getProvidedDependency(
+			SprykerBridgeDependencyProvider::FACADE_AUTH
 		);
 	}
 
