@@ -8,7 +8,7 @@ use Engineered\HttpClient\HttpClientFacade;
 class CategoryTrees
 {
 
-	public const CATEGORY_TREES_ENDPOINT = '/category-trees';
+	public const CATEGORY_TREES_ENDPOINT = 'category-trees';
 
 
 	public function __construct(

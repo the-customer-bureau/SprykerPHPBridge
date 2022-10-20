@@ -9,6 +9,8 @@ use Engineered\HttpClient\HttpClientFacade;
 class AbstractProducts
 {
 
+	public const ABSTRACT_PRODUCT_SEARCH_ENDPOINT = 'catalog-search?q=';
+
 
 	public function __construct(
 		public HttpClientFacade $httpClient
@@ -19,8 +21,9 @@ class AbstractProducts
 
 	public function get(string $searchTerm): array
 	{
-		return [];
-//		return $this->httpClient->getHttpClient()->request('GET', $this->glueApiUrl . '/catalog-search?q='. $searchTerm)->toArray();
+
+		return $this->httpClient->get(self::ABSTRACT_PRODUCT_SEARCH_ENDPOINT . $searchTerm);
+
 	}
 
 
