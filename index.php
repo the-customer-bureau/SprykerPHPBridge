@@ -11,7 +11,9 @@ $sprykerBridge = new SprykerBridgeFacade();
 Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
 
 //$result = $sprykerBridge->getCategoryTrees();
-$result = $sprykerBridge->getCategory(4);
+//$result = $sprykerBridge->getCategory(4);
+//$result = $sprykerBridge->getAbstractProduct(208);
+$result = $sprykerBridge->getConcreteProduct("209_12554247");
 //$result = $sprykerBridge->searchAbstractProducts('toshiba');
 //$result = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123');
 //echo json_encode($result['data']['attributes']['refreshToken']);

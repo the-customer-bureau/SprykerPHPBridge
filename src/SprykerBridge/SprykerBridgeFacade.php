@@ -44,4 +44,16 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
+	public function getAbstractProduct(string $sku): array
+	{
+		return $this->getFactory()->getResourceFacade()->getAbstractProduct($sku);
+
+	}
+
+	public function getConcreteProduct(string $sku): array
+	{
+		return $this->getFactory()->getResourceFacade()->getConcreteProduct($sku);
+
+	}
+
 }
