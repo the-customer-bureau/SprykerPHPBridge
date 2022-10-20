@@ -2,6 +2,7 @@
 
 namespace Engineered\Customer\Domain;
 
+use Engineered\Customer\Enums\WishlistsAttribute;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class Wishlists
@@ -28,9 +29,21 @@ class Wishlists
 	}
 
 
-	public function create(string $name, string $bearerToken): array
+	public function create(string $name, string $bearerToken, WishlistsAttribute $returnAttribute = null): array|string
 	{
-		return $this->httpClient->post(self::WISHLISTS_ENDPOINT, $this->getCreationPayload($name), null, $bearerToken);
+		$response = $this->httpClient->post(self::WISHLISTS_ENDPOINT, $this->getCreationPayload($name), null, $bearerToken);
+
+		if (!$returnAttribute)
+		{
+			return $response;
+		}
+		if ($returnAttribute->value === 'id')
+		{
+			return $response['data']['id'];
+		}
+
+		return $response['data']['attributes'][$returnAttribute->value];
+
 
 	}
 
