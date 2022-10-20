@@ -1,6 +1,6 @@
 # SprykerPHPBridge
 ## A PHP wrapper for the Spryker Glue API.
-> Written in [Gacela](https://github.com/gacela-project/gacela)
+> Written in PHP using [Gacela](https://github.com/gacela-project/gacela)
 
 ### Q. So what does this do and why is it useful?
 
@@ -15,4 +15,23 @@ A. Well we know...! But this package allows you to use Spryker data in any PHP A
 
 ```bash
 composer require engineered/sprykerphpbridgegacela
+```
+
+
+### Example
+
+```php
+
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
+
+$sprykerBridge = new SprykerBridgeFacade();
+
+// Login and return the Bearer Token for other protected requests.
+$bearerToken = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123', TokenReturnAttribute::accessToken);
+
+
 ```
