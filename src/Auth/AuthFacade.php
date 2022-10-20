@@ -18,8 +18,9 @@ final class AuthFacade extends AbstractFacade
 		return $this->getFactory()->createAccessToken()->get($username, $password);
 
 	}
-	public function refreshTokens(string $refreshToken)
-	{
 
+	public function refreshTokens(string $refreshToken): array
+	{
+		return $this->getFactory()->createRefreshToken()->refresh($refreshToken);
 	}
 }

@@ -22,7 +22,7 @@ final class AuthFactory extends AbstractFactory
 
 	public function createRefreshToken(): RefreshToken
 	{
-		return new RefreshToken();
+		return new RefreshToken($this->getHttpClient());
 	}
 
 	private function getHttpClient(): HttpClientFacade

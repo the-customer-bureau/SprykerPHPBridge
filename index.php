@@ -13,4 +13,10 @@ Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
 //$result = $sprykerBridge->getCategoryTrees();
 //$result = $sprykerBridge->searchAbstractProducts('toshiba');
 $result = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123');
+echo json_encode($result['data']['attributes']['refreshToken']);
+
+$result = $sprykerBridge->refreshTokens($result['data']['attributes']['refreshToken']);
+
+
+
 echo json_encode($result);
