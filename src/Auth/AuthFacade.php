@@ -12,10 +12,10 @@ use Gacela\Framework\AbstractFacade;
 final class AuthFacade extends AbstractFacade
 {
 
-	public function getAccessTokenArray(string $username, string $password): array
+	public function getAccessToken(string $username, string $password, string $returnAttribute): array|string
 	{
 
-		return $this->getFactory()->createAccessToken()->get($username, $password);
+		return $this->getFactory()->createAccessToken()->get($username, $password, $returnAttribute);
 
 	}
 
