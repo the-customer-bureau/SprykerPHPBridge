@@ -10,14 +10,15 @@ use Gacela\Framework\Container\Container;
 
 final class CartDependencyProvider extends AbstractDependencyProvider
 {
+
 	public const FACADE_HTTP_CLIENT = 'FACADE_HTTP_CLIENT';
 
 	public function provideModuleDependencies(Container $container): void
 	{
-		$this->addSharedFacade($container);
+		$this->addHttpClientFacade($container);
 	}
 
-	private function addSharedFacade(Container $container) {
+	private function addHttpClientFacade(Container $container) {
 		$container->set(
 			self::FACADE_HTTP_CLIENT,
 			function (Container $container) {
@@ -25,4 +26,6 @@ final class CartDependencyProvider extends AbstractDependencyProvider
 			}
 		);
 	}
+
+
 }

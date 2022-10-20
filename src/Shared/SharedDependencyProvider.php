@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Engineered\Customer;
+namespace Engineered\Shared;
 
 use Engineered\HttpClient\HttpClientFacade;
 use Gacela\Framework\AbstractDependencyProvider;
 use Gacela\Framework\Container\Container;
 
-final class CustomerDependencyProvider extends AbstractDependencyProvider
+final class SharedDependencyProvider extends AbstractDependencyProvider
 {
 	public const FACADE_HTTP_CLIENT = 'FACADE_HTTP_CLIENT';
 

@@ -38,4 +38,10 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
+	public function getCategory(int $id): array
+	{
+		return $this->getFactory()->getResourceFacade()->getCategory($id);
+
+	}
+
 }

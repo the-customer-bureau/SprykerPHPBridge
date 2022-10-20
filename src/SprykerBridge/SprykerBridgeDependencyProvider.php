@@ -8,6 +8,7 @@ use Engineered\Auth\AuthFacade;
 use Engineered\Cart\CartFacade;
 use Engineered\Collections\CollectionsFacade;
 
+use Engineered\Resource\ResourceFacade;
 use Gacela\Framework\AbstractDependencyProvider;
 use Gacela\Framework\Container\Container;
 
@@ -16,12 +17,14 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
 	public const FACADE_COLLECTIONS = 'FACADE_COLLECTIONS';
 	public const FACADE_AUTH = 'FACADE_AUTH';
 	public const FACADE_CART = 'FACADE_CART';
+	public const FACADE_RESOURCE = 'FACADE_RESOURCE';
 
 	public function provideModuleDependencies(Container $container): void
 	{
 		$this->addCollectionsFacade($container);
 		$this->addAuthFacade($container);
 		$this->addCartFacade($container);
+		$this->addResourceFacade($container);
 	}
 
 	private function addCollectionsFacade(Container $container): void
@@ -50,6 +53,16 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
 			self::FACADE_CART,
 			function (Container $container) {
 				return $container->getLocator()->get(CartFacade::class);
+			}
+		);
+	}
+
+	private function addResourceFacade(Container $container): void
+	{
+		$container->set(
+			self::FACADE_RESOURCE,
+			function (Container $container) {
+				return $container->getLocator()->get(ResourceFacade::class);
 			}
 		);
 	}

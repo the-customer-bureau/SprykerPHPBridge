@@ -7,7 +7,7 @@ namespace Engineered\Collections;
 use Engineered\Collections\Domain\AbstractProducts;
 use Engineered\Collections\Domain\CategoryTrees;
 use Engineered\HttpClient\HttpClientFacade;
-use Engineered\Shared\SharedFacade;
+use Engineered\Shared\SharedDependencyProvider;
 use Gacela\Framework\AbstractFactory;
 
 /**

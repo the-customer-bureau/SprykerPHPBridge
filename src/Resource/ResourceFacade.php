@@ -11,4 +11,9 @@ use Gacela\Framework\AbstractFacade;
  */
 final class ResourceFacade extends AbstractFacade
 {
+
+	public function getCategory(int $id): array
+	{
+		return $this->getFactory()->createCategory()->get($id);
+	}
 }

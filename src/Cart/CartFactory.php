@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Engineered\Cart;
 
-use Engineered\Cart\Domain\GuestCart;
 use Engineered\Cart\Domain\GuestCartItems;
 use Engineered\HttpClient\HttpClientFacade;
 
+use Engineered\Shared\SharedDependencyProvider;
 use Gacela\Framework\AbstractFactory;
 
 /**
