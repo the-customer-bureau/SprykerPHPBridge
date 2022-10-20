@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Engineered\SprykerBridge;
 
 use Engineered\Auth\Enums\TokenReturnAttribute;
+use Engineered\Cart\Enums\GuestCartReturnAttribute;
 use Engineered\Customer\Enums\WishlistsAttribute;
 use Gacela\Framework\AbstractFacade;
 
@@ -15,7 +16,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 {
 
 	// TODO - use an array to retrieve the includes - MAYBE ACROSS ALL APPLICABLE ENDPOINTS?
-	// TODO - Use UNION TYPES to allow selection of returned attributes... do something cool!
+	// TODO - Use UNION TYPES to allow selection of returned attributes... do something cool! ... I DID! ENUMS!
 
 	/****
 	 *
@@ -23,7 +24,6 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 * AUTH
 	 *
 	 */
-
 
 
 	public function getAccessToken(string $username, string $password, TokenReturnAttribute $returnAttribute = null): array|string
@@ -35,8 +35,6 @@ final class SprykerBridgeFacade extends AbstractFacade
 	{
 		return $this->getFactory()->getAuthFacade()->refreshTokens($refreshToken, $returnAttribute);
 	}
-
-
 
 
 	/****
@@ -58,14 +56,12 @@ final class SprykerBridgeFacade extends AbstractFacade
 	}
 
 
-
 	/****
 	 *
 	 *
 	 * PRODUCTS
 	 *
 	 */
-
 
 
 	public function getAbstractProduct(string $sku): array
@@ -99,9 +95,9 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 *
 	 */
 
-	public function getCustomerCarts(string $bearerToken, array $include = null): array
+	public function getCustomerCarts(string $bearerToken, array $include = null, GuestCartReturnAttribute $returnAttribute = null): array|string
 	{
-		return $this->getFactory()->getCartFacade()->getCustomerCarts($bearerToken, $include);
+		return $this->getFactory()->getCartFacade()->getCustomerCarts($bearerToken, $include, $returnAttribute);
 
 	}
 
@@ -111,12 +107,23 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
-	public function addToGuestCart(string $concreteSku, string $customerUniqueId, int $quantity = 1, string $id = null): array
+	public function addToGuestCart(
+		string $concreteSku,
+		string $customerUniqueId,
+		int $quantity = 1,
+		string $id = null,
+		GuestCartReturnAttribute $returnAttribute = null
+	): array|string
 	{
-		return $this->getFactory()->getCartFacade()->addToGuestCart($concreteSku, $quantity, $customerUniqueId, $id);
+		return $this->getFactory()->getCartFacade()->addToGuestCart(
+			$concreteSku,
+			$quantity,
+			$customerUniqueId,
+			$id,
+			$returnAttribute
+		);
 
 	}
-
 
 
 	/****
@@ -125,8 +132,6 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 * WISHLISTS
 	 *
 	 */
-
-
 
 
 	public function getWishlists(string $bearerToken): array
@@ -141,7 +146,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
-	public function createWishlist(string $name, string $bearerToken , WishlistsAttribute $returnAttribute = null): array|string
+	public function createWishlist(string $name, string $bearerToken, WishlistsAttribute $returnAttribute = null): array|string
 	{
 		return $this->getFactory()->getCustomerFacade()->createWishlist($name, $bearerToken, $returnAttribute);
 

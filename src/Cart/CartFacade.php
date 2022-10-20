@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\Cart;
 
+use Engineered\Cart\Enums\GuestCartReturnAttribute;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -12,14 +13,14 @@ use Gacela\Framework\AbstractFacade;
 final class CartFacade extends AbstractFacade
 {
 
-	public function addToGuestCart(string $concreteSku, int $quantity, string $customerUniqueId, string $id = null): array
+	public function addToGuestCart(string $concreteSku, int $quantity, string $customerUniqueId, string $id = null, GuestCartReturnAttribute $returnAttribute = null): array|string
 	{
-		return $this->getFactory()->createGuestCartItems()->add($concreteSku,  $quantity,  $customerUniqueId, $id);
+		return $this->getFactory()->createGuestCartItems()->add($concreteSku,  $quantity,  $customerUniqueId, $id, $returnAttribute);
 	}
 
-	public function getCustomerCarts(string $bearerToken, array $include = null): array
+	public function getCustomerCarts(string $bearerToken, array $include = null, GuestCartReturnAttribute $returnAttribute = null): array
 	{
-		return $this->getFactory()->createCustomerCarts()->get($bearerToken, $include);
+		return $this->getFactory()->createCustomerCarts()->get($bearerToken, $include, $returnAttribute);
 	}
 
 	public function addToCustomerCart(string $concreteSku, int $quantity, string $cartId, string $bearerToken): array
