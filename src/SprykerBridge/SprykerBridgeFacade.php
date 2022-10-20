@@ -50,9 +50,39 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
+	public function getRelatedAbstractProducts(string $sku): array
+	{
+		return $this->getFactory()->getResourceFacade()->getRelatedAbstractProducts($sku);
+
+	}
+
 	public function getConcreteProduct(string $sku): array
 	{
 		return $this->getFactory()->getResourceFacade()->getConcreteProduct($sku);
+
+	}
+
+	public function getCustomerCarts(string $bearerToken, array $include = null): array
+	{
+		return $this->getFactory()->getCartFacade()->getCustomerCarts($bearerToken, $include);
+
+	}
+
+	public function addToCustomerCart(string $sku, int $quantity, string $cartId, string $bearerToken): array
+	{
+		return $this->getFactory()->getCartFacade()->addToCustomerCart($sku, $quantity, $cartId, $bearerToken);
+
+	}
+
+	public function getWishlists(string $bearerToken): array
+	{
+		return $this->getFactory()->getCustomerFacade()->getWishLists($bearerToken);
+
+	}
+
+	public function createWishlist(string $name, string $bearerToken): array
+	{
+		return $this->getFactory()->getCustomerFacade()->createWishlist($name, $bearerToken);
 
 	}
 

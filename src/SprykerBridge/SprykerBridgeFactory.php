@@ -8,6 +8,7 @@ use Engineered\Auth\AuthFacade;
 use Engineered\Cart\CartFacade;
 use Engineered\Collections\CollectionsFacade;
 
+use Engineered\Customer\CustomerFacade;
 use Engineered\Resource\ResourceFacade;
 use Gacela\Framework\AbstractFactory;
 
@@ -45,5 +46,13 @@ final class SprykerBridgeFactory extends AbstractFactory
 			SprykerBridgeDependencyProvider::FACADE_RESOURCE
 		);
 	}
+
+	public function getCustomerFacade(): CustomerFacade
+	{
+		return $this->getProvidedDependency(
+			SprykerBridgeDependencyProvider::FACADE_CUSTOMER
+		);
+	}
+
 
 }

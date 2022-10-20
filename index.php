@@ -13,14 +13,24 @@ Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
 //$result = $sprykerBridge->getCategoryTrees();
 //$result = $sprykerBridge->getCategory(4);
 //$result = $sprykerBridge->getAbstractProduct(208);
-$result = $sprykerBridge->getConcreteProduct("209_12554247");
-//$result = $sprykerBridge->searchAbstractProducts('toshiba');
-//$result = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123');
-//echo json_encode($result['data']['attributes']['refreshToken']);
+//$result = $sprykerBridge->getRelatedAbstractProducts(202);
+//$result = $sprykerBridge->getConcreteProduct("209_12554247");
+//$result = $sprykerBridge->searchAbstractProducts('NEX-VG20EH');
+
+
+$result = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123');
+
+$bearerToken = $result['data']['attributes']['accessToken'];
+
+$name = uniqid('my wishlist');
+
+$result = $sprykerBridge->createWishlist($name, $bearerToken);
+
+$result = $sprykerBridge->getWishlists($bearerToken);
+
+//$result = $sprykerBridge->getCustomerCarts($bearerToken);
 //
-//$result = $sprykerBridge->refreshTokens($result['data']['attributes']['refreshToken']);
+//$result = $sprykerBridge->addToCustomerCart('209_12554247', 3, $result['data'][0]['id'], $bearerToken);
 
-
-//$result = $sprykerBridge->addToGuestCart('206_6429825', '111-222-333', 4);
 
 echo json_encode($result);

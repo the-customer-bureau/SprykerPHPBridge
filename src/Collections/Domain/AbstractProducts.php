@@ -21,9 +21,7 @@ class AbstractProducts
 
 	public function get(string $searchTerm): array
 	{
-
 		return $this->httpClient->get(self::ABSTRACT_PRODUCT_SEARCH_ENDPOINT . $searchTerm);
-
 	}
 
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Engineered\Cart;
 
+use Engineered\Cart\Domain\Carts;
 use Engineered\Cart\Domain\GuestCartItems;
 use Engineered\HttpClient\HttpClientFacade;
 
-use Engineered\Shared\SharedDependencyProvider;
 use Gacela\Framework\AbstractFactory;
 
 /**
@@ -19,6 +19,13 @@ final class CartFactory extends AbstractFactory
 	public function createGuestCartItems(): GuestCartItems
 	{
 		return new GuestCartItems(
+			$this->getHttpClient()
+		);
+	}
+
+	public function createCustomerCarts(): Carts
+	{
+		return new Carts(
 			$this->getHttpClient()
 		);
 	}
