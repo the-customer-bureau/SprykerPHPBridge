@@ -12,15 +12,15 @@ use Gacela\Framework\AbstractFacade;
 final class SprykerBridgeFacade extends AbstractFacade
 {
 
-	public function getCategoryTrees(): array
-	{
-		return $this->getFactory()->getCollectionsFacade()->getCategoryTrees();
-	}
 
-	public function searchAbstractProducts(string $searchTerm): array
-	{
-		return $this->getFactory()->getCollectionsFacade()->searchAbstractProducts($searchTerm);
-	}
+	/****
+	 *
+	 *
+	 * AUTH
+	 *
+	 */
+
+
 
 	public function getAccessToken(string $username, string $password): array
 	{
@@ -32,17 +32,37 @@ final class SprykerBridgeFacade extends AbstractFacade
 		return $this->getFactory()->getAuthFacade()->refreshTokens($refreshToken);
 	}
 
-	public function addToGuestCart(string $concreteSku, string $customerUniqueId, int $quantity = 1, string $id = null): array
-	{
-		return $this->getFactory()->getCartFacade()->addToGuestCart($concreteSku, $quantity, $customerUniqueId, $id);
 
-	}
+	
+
+	/****
+	 *
+	 *
+	 * CATEGORIES
+	 *
+	 */
 
 	public function getCategory(int $id): array
 	{
 		return $this->getFactory()->getResourceFacade()->getCategory($id);
 
 	}
+
+	public function getCategoryTrees(): array
+	{
+		return $this->getFactory()->getCollectionsFacade()->getCategoryTrees();
+	}
+
+
+
+	/****
+	 *
+	 *
+	 * PRODUCTS
+	 *
+	 */
+
+
 
 	public function getAbstractProduct(string $sku): array
 	{
@@ -62,6 +82,19 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
+	public function searchAbstractProducts(string $searchTerm): array
+	{
+		return $this->getFactory()->getCollectionsFacade()->searchAbstractProducts($searchTerm);
+	}
+
+
+	/****
+	 *
+	 *
+	 * CARTS
+	 *
+	 */
+
 	public function getCustomerCarts(string $bearerToken, array $include = null): array
 	{
 		return $this->getFactory()->getCartFacade()->getCustomerCarts($bearerToken, $include);
@@ -73,6 +106,23 @@ final class SprykerBridgeFacade extends AbstractFacade
 		return $this->getFactory()->getCartFacade()->addToCustomerCart($sku, $quantity, $cartId, $bearerToken);
 
 	}
+
+	public function addToGuestCart(string $concreteSku, string $customerUniqueId, int $quantity = 1, string $id = null): array
+	{
+		return $this->getFactory()->getCartFacade()->addToGuestCart($concreteSku, $quantity, $customerUniqueId, $id);
+
+	}
+
+
+
+	/****
+	 *
+	 *
+	 * WISHLISTS
+	 *
+	 */
+
+
 
 	public function getWishlists(string $bearerToken): array
 	{
