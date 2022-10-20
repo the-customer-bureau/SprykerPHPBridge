@@ -3,6 +3,8 @@
 namespace Engineered\HttpClient\Client;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\HttpClient\ResponseStreamInterface;
 
 class HttpClient
 {
@@ -38,6 +40,20 @@ class HttpClient
 	{
 
 		return $this->client->request('POST', $this->glueApiUrl . '/' . $endpoint,
+			[
+				'headers'     => $headers,
+				'auth_bearer' => $bearerToken,
+				'body'        => json_encode($payload),
+
+			]
+		)->toArray();
+
+	}
+
+	public function delete(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array
+	{
+
+		return $this->client->request('DELETE', $this->glueApiUrl . '/' . $endpoint,
 			[
 				'headers'     => $headers,
 				'auth_bearer' => $bearerToken,

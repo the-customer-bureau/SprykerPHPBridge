@@ -8,6 +8,7 @@ class Wishlists
 {
 
 	public const WISHLISTS_ENDPOINT = 'wishlists';
+	public const WISHLIST_ITEMS_ENDPOINT = 'wishlist-items';
 
 
 	public function __construct(
@@ -16,7 +17,12 @@ class Wishlists
 	{
 	}
 
-	public function get(string $bearerToken): array
+	public function get(string $wishlistId, string $bearerToken): array
+	{
+		return $this->httpClient->getProtected(self::WISHLISTS_ENDPOINT . '/' . $wishlistId, $bearerToken);
+	}
+
+	public function getList(string $bearerToken): array
 	{
 		return $this->httpClient->getProtected(self::WISHLISTS_ENDPOINT, $bearerToken);
 	}
@@ -25,6 +31,22 @@ class Wishlists
 	public function create(string $name, string $bearerToken): array
 	{
 		return $this->httpClient->post(self::WISHLISTS_ENDPOINT, $this->getCreationPayload($name), null, $bearerToken);
+
+	}
+
+	public function add(string $wishlistId, string $sku, string $bearerToken): array
+	{
+		return $this->httpClient->post(
+			self::WISHLISTS_ENDPOINT . '/' . $wishlistId . '/' . self::WISHLIST_ITEMS_ENDPOINT,
+			$this->getAdditionPayload($sku),
+			null,
+			$bearerToken);
+
+	}
+
+	public function delete(string $wishlistId, string $sku, string $bearerToken): array
+	{
+		return $this->httpClient->delete(self::WISHLISTS_ENDPOINT . '/' . $wishlistId, null, $bearerToken);
 
 	}
 
@@ -42,4 +64,15 @@ class Wishlists
 
 	}
 
+	private function getAdditionPayload(string $sku): array
+	{
+		$payload = [];
+
+		$payload['data']                      = [];
+		$payload['data']['type']              = self::WISHLIST_ITEMS_ENDPOINT;
+		$payload['data']['attributes']['sku'] = $sku;
+
+		return $payload;
+
+	}
 }

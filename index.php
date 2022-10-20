@@ -26,11 +26,12 @@ $name = uniqid('my wishlist');
 
 $result = $sprykerBridge->createWishlist($name, $bearerToken);
 
-$result = $sprykerBridge->getWishlists($bearerToken);
+$wishListId = $result['data']['id'];
 
-//$result = $sprykerBridge->getCustomerCarts($bearerToken);
-//
-//$result = $sprykerBridge->addToCustomerCart('209_12554247', 3, $result['data'][0]['id'], $bearerToken);
+$result = $sprykerBridge->addToWishlist($wishListId, '209_12554247', $bearerToken);
+
+$result = $sprykerBridge->getWishlist($wishListId, $bearerToken);
+
 
 
 echo json_encode($result);

@@ -80,9 +80,21 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
+	public function getWishlist(string $wishlistId, string $bearerToken): array
+	{
+		return $this->getFactory()->getCustomerFacade()->getWishList($wishlistId, $bearerToken);
+
+	}
+
 	public function createWishlist(string $name, string $bearerToken): array
 	{
 		return $this->getFactory()->getCustomerFacade()->createWishlist($name, $bearerToken);
+
+	}
+
+	public function addToWishlist(string $wishlistId, string $sku, string $bearerToken): array
+	{
+		return $this->getFactory()->getCustomerFacade()->addToWishlist($wishlistId, $sku, $bearerToken);
 
 	}
 

@@ -26,4 +26,10 @@ final class HttpClientFacade extends AbstractFacade implements HttpClientFacadeI
 	{
 		return $this->getFactory()->createClient()->post($endpoint, $payload, $headers, $bearerToken);
 	}
+
+
+	public function delete(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array
+	{
+		return $this->getFactory()->createClient()->delete($endpoint, $payload, $headers, $bearerToken);
+	}
 }

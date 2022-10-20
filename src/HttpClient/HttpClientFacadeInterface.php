@@ -12,4 +12,6 @@ interface HttpClientFacadeInterface
 
 	public function post(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array;
 
+	public function delete(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array;
+
 }
