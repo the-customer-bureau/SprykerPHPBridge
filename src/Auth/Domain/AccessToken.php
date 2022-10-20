@@ -19,7 +19,7 @@ class AccessToken
 	}
 
 
-	public function get(string $username, string $password, string $returnAttribute): array|string
+	public function get(string $username, string $password, string $returnAttribute = null): array|string
 	{
 
 		$response = $this->httpClient->post(self::ACCESS_TOKEN_ENDPOINT, $this->getPayload($username, $password));

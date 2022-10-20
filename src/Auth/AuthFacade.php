@@ -12,7 +12,7 @@ use Gacela\Framework\AbstractFacade;
 final class AuthFacade extends AbstractFacade
 {
 
-	public function getAccessToken(string $username, string $password, string $returnAttribute): array|string
+	public function getAccessToken(string $username, string $password, string $returnAttribute = null): array|string
 	{
 
 		return $this->getFactory()->createAccessToken()->get($username, $password, $returnAttribute);
