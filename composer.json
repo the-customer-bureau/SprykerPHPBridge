@@ -1,6 +1,6 @@
 {
   "name": "engineered/sprykerphpbridge",
-  "description": "description",
+  "description": "A PHP wrapper for the Spryker Glue API",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
