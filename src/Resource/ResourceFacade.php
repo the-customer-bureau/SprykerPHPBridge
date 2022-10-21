@@ -14,21 +14,29 @@ final class ResourceFacade extends AbstractFacade
 
 	public function getCategory(int $id): array
 	{
-		return $this->getFactory()->createCategory()->get($id);
+		return $this->getFactory()
+			->createCategory()
+			->get($id);
 	}
 
 	public function getAbstractProduct(string $sku): array
 	{
-		return $this->getFactory()->createAbstractProduct()->get($sku);
+		return $this->getFactory()
+			->createAbstractProduct()
+			->get($sku);
 	}
 
 	public function getRelatedAbstractProducts(string $sku): array
 	{
-		return $this->getFactory()->createAbstractProduct()->getRelated($sku);
+		return $this->getFactory()
+			->createAbstractProduct()
+			->getRelated($sku);
 	}
 
 	public function getConcreteProduct(string $sku): array
 	{
-		return $this->getFactory()->createConcreteProduct()->get($sku);
+		return $this->getFactory()
+			->createConcreteProduct()
+			->get($sku);
 	}
 }

@@ -14,22 +14,30 @@ final class HttpClientFacade extends AbstractFacade implements HttpClientFacadeI
 
 	public function get(string $endpoint, array $include = null): array
 	{
-		return $this->getFactory()->createClient()->get($endpoint . '?include=' . ($include ? implode(',', $include) : ''));
+		return $this->getFactory()
+			->createClient()
+			->get($endpoint . '?include=' . ($include ? implode(',', $include) : ''));
 	}
 
 	public function getProtected(string $endpoint, string $bearerToken, array $include = null): array
 	{
-		return $this->getFactory()->createClient()->getProtected($endpoint . '?include=' . ($include ? implode(',', $include) : ''), $bearerToken);
+		return $this->getFactory()
+			->createClient()
+			->getProtected($endpoint . '?include=' . ($include ? implode(',', $include) : ''), $bearerToken);
 	}
 
 	public function post(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array
 	{
-		return $this->getFactory()->createClient()->post($endpoint, $payload, $headers, $bearerToken);
+		return $this->getFactory()
+			->createClient()
+			->post($endpoint, $payload, $headers, $bearerToken);
 	}
 
 
 	public function delete(string $endpoint, array $payload, array $headers = null, string $bearerToken = null): array
 	{
-		return $this->getFactory()->createClient()->delete($endpoint, $payload, $headers, $bearerToken);
+		return $this->getFactory()
+			->createClient()
+			->delete($endpoint, $payload, $headers, $bearerToken);
 	}
 }
