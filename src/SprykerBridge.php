@@ -13,7 +13,7 @@ class SprykerBridge
 	public static function create(string $glueUrl): SprykerBridgeFacade
 	{
 
-		// todo - Add lots of configuration Gacela configuration options here that can be initialised via the "create" function parameters.
+		// todo - Add lots of Gacela configuration options here that can be initialised via the "create" function parameters.
 
 		$config = new GacelaConfig();
 		$config->addAppConfigKeyValue('GLUE_API_URL', $glueUrl);
