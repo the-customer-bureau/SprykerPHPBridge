@@ -31,7 +31,23 @@ require __DIR__ . '/vendor/autoload.php';
 $sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 
 
-// Login and return the Bearer Token for other protected requests.
+// grab the category trees:
+$categoryTress = $sprykerBridge->getCategoryTrees();
+
+// grab a single category
+$category = $sprykerBridge->getCategory(4);
+
+// grab products
+$abstractProduct = $sprykerBridge->getAbstractProduct(202);
+$concreteProduct = $sprykerBridge->getConcreteProduct("209_12554247");
+$relatedProducts = $sprykerBridge->getRelatedAbstractProducts(202);
+
+// even search products
+$sprykerBridge->searchAbstractProducts('NEX-VG20EH');
+
+// getting more advanced:
+
+// Login and return the Bearer Token for protected requests.
 $bearerToken = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123', TokenReturnAttribute::accessToken);
 
 // with your bearer token, you can now do things like, create a wishlist...
@@ -39,11 +55,18 @@ $name = uniqid('my wishlist');
 
 $wishListId = $sprykerBridge->createWishlist($name, $bearerToken);
 
-// ... and the API allows you to specify what gets returned by using the supplied Enums:
+// ... and the API allows you to specify what gets returned by using the supplied Enums. This code will return the ID directly as a string, rather than the entire response.
 
 $name = uniqid('my wishlist');
 
 $wishListId = $sprykerBridge->createWishlist($name, $bearerToken, WishlistsAttribute::id);
 
+// we can easily add to the wishlist:
+$sprykerBridge->addToWishlist($wishListId, '209_12554247', $bearerToken);
+
+
+// we can even add to cart and checkout (coming next)
+
+$sprykerBridge->addToGuestCart('209_12554247', $uid, 4, null, GuestCartReturnAttribute::totals_discountTotal);
 
 ```
