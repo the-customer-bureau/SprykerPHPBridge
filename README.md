@@ -26,9 +26,9 @@ composer require engineered/sprykerphpbridgegacela
 
 require __DIR__ . '/vendor/autoload.php';
 
-Gacela::bootstrap(__DIR__, GacelaConfig::withPhpConfigDefault());
+// Change YOUR_GLUE_URL to something like: 'https://glue.de.b2c.demo-spryker.com'
+$sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 
-$sprykerBridge = new SprykerBridgeFacade();
 
 // Login and return the Bearer Token for other protected requests.
 $bearerToken = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123', TokenReturnAttribute::accessToken);
