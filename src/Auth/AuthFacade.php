@@ -16,12 +16,16 @@ final class AuthFacade extends AbstractFacade
 	public function getAccessToken(string $username, string $password, TokenReturnAttribute $returnAttribute = null): array|string
 	{
 
-		return $this->getFactory()->createAccessToken()->get($username, $password, $returnAttribute);
+		return $this->getFactory()
+			->createAccessToken()
+			->get($username, $password, $returnAttribute);
 
 	}
 
 	public function refreshTokens(string $refreshToken, TokenReturnAttribute $returnAttribute = null): array|string
 	{
-		return $this->getFactory()->createRefreshToken()->refresh($refreshToken, $returnAttribute);
+		return $this->getFactory()
+			->createRefreshToken()
+			->refresh($refreshToken, $returnAttribute);
 	}
 }
