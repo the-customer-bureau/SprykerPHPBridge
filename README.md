@@ -34,5 +34,16 @@ $sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 // Login and return the Bearer Token for other protected requests.
 $bearerToken = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123', TokenReturnAttribute::accessToken);
 
+// with your bearer token, you can now do things like, create a wishlist...
+$name = uniqid('my wishlist');
+
+$wishListId = $sprykerBridge->createWishlist($name, $bearerToken);
+
+// ... and the API allows you to specify what gets returned by using the supplied Enums:
+
+$name = uniqid('my wishlist');
+
+$wishListId = $sprykerBridge->createWishlist($name, $bearerToken, WishlistsAttribute::id);
+
 
 ```
