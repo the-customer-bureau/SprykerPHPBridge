@@ -14,7 +14,7 @@ A. Well we know...! But this package allows you to use Spryker data in any PHP A
 ### Installation (once published on packagist.org)
 
 ```bash
-composer require engineered/sprykerphpbridgegacela
+composer require engineered/sprykerphpbridge
 ```
 
 
