@@ -8,7 +8,7 @@ A. This package allows you to easily interact with the Spryker Glue API in your 
 
 ### Q. So... erm... why? Why not just use Spryker...? It's already a great PHP application!
 
-A. Well we know...! But this package allows you to use Spryker data in any PHP Application... like WordPress, Joomla, Drupal or even Laraval (Plugins for each coming soon!)
+A. Well we know...! But this package allows you to use Spryker data in any PHP Application...!
 
 
 ### Installation (once published on packagist.org)
