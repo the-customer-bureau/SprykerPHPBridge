@@ -11,11 +11,12 @@ A. This package allows you to easily interact with the Spryker Glue API in your 
 A. Well we know...! But this package allows you to use Spryker data in any PHP Application... like WordPress, Joomla, Drupal or even Laraval.
 
 
-### Installation
+### Installation (once published on packagist.org)
 
 ```bash
 composer require engineered/sprykerphpbridgegacela
 ```
+
 
 
 ### Example
