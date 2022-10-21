@@ -53,7 +53,7 @@ $bearerToken = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123', 
 // with your bearer token, you can now do things like, create a wishlist...
 $name = uniqid('my wishlist');
 
-$wishListId = $sprykerBridge->createWishlist($name, $bearerToken);
+$wishList = $sprykerBridge->createWishlist($name, $bearerToken);
 
 // ... and the API allows you to specify what gets returned by using the supplied Enums.
 // This code will return the ID directly as a string, rather than the entire response.
