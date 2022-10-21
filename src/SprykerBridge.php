@@ -20,7 +20,6 @@ class SprykerBridge
 		$setup = SetupGacela::fromGacelaConfig($config);
 
 		Config::getInstance()
-			->setAppRootDir(__DIR__ . '../')
 			->setSetup($setup)
 			->init();
 
