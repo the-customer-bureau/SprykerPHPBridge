@@ -55,8 +55,8 @@ $name = uniqid('my wishlist');
 
 $wishListId = $sprykerBridge->createWishlist($name, $bearerToken);
 
-// ... and the API allows you to specify what gets returned by using the supplied Enums. This code will return the ID directly as a string, rather than the entire response.
-
+// ... and the API allows you to specify what gets returned by using the supplied Enums.
+// This code will return the ID directly as a string, rather than the entire response.
 $name = uniqid('my wishlist');
 
 $wishListId = $sprykerBridge->createWishlist($name, $bearerToken, WishlistsAttribute::id);
