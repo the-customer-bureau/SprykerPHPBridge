@@ -65,7 +65,7 @@ $wishListId = $sprykerBridge->createWishlist($name, $bearerToken, WishlistsAttri
 $sprykerBridge->addToWishlist($wishListId, '209_12554247', $bearerToken);
 
 
-// we can even add to cart and checkout (coming next)
+// we can even add to cart! (checkout coming next!)
 
 $sprykerBridge->addToGuestCart('209_12554247', $uid, 4, null, GuestCartReturnAttribute::totals_discountTotal);
 
