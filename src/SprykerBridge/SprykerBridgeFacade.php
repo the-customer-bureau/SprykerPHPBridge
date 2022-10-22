@@ -6,7 +6,6 @@ namespace Engineered\SprykerBridge;
 
 use Engineered\Auth\Enums\TokenReturnAttribute;
 use Engineered\Cart\Enums\GuestCartReturnAttribute;
-use Engineered\Customer\Enums\WishlistsAttribute;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -167,7 +166,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
-	public function createWishlist(string $name, string $bearerToken, WishlistsAttribute $returnAttribute = null): array|string
+	public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getCustomerFacade()
