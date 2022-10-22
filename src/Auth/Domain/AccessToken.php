@@ -3,7 +3,6 @@
 namespace Engineered\Auth\Domain;
 
 
-use Engineered\Auth\Enums\TokenReturnAttribute;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class AccessToken
@@ -20,17 +19,17 @@ class AccessToken
 	}
 
 
-	public function get(string $username, string $password, TokenReturnAttribute $returnAttribute = null): array|string
+	public function get(string $username, string $password, ?string $returnAttribute = null): array|string
 	{
 
 		$response = $this->httpClient->post(self::ACCESS_TOKEN_ENDPOINT, $this->getPayload($username, $password));
 
-		if (!$returnAttribute)
+		if ($returnAttribute === null)
 		{
 			return $response;
 		}
 
-		return $response['data']['attributes'][$returnAttribute->value];
+		return $response['data']['attributes'][$returnAttribute];
 
 
 	}

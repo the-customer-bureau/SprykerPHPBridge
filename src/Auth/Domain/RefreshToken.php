@@ -2,7 +2,6 @@
 
 namespace Engineered\Auth\Domain;
 
-use Engineered\Auth\Enums\TokenReturnAttribute;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class RefreshToken
@@ -17,17 +16,17 @@ class RefreshToken
 	{
 	}
 
-	public function refresh(string $refreshToken, TokenReturnAttribute $returnAttribute = null): array|string
+	public function refresh(string $refreshToken, ?string $returnAttribute = null): array|string
 	{
 		$response = $this->httpClient->post(self::REFRESH_TOKEN_ENDPOINT, $this->getPayload($refreshToken));
 
 
-		if (!$returnAttribute)
+		if ($returnAttribute === null)
 		{
 			return $response;
 		}
 
-		return $response['data']['attributes'][$returnAttribute->value];
+		return $response['data']['attributes'][$returnAttribute];
 
 
 	}

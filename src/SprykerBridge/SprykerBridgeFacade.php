@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\SprykerBridge;
 
-use Engineered\Auth\Enums\TokenReturnAttribute;
 use Engineered\Cart\Enums\GuestCartReturnAttribute;
 use Gacela\Framework\AbstractFacade;
 
@@ -25,14 +24,14 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 */
 
 
-	public function getAccessToken(string $username, string $password, TokenReturnAttribute $returnAttribute = null): array|string
+	public function getAccessToken(string $username, string $password, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getAuthFacade()
 			->getAccessToken($username, $password, $returnAttribute);
 	}
 
-	public function refreshTokens(string $refreshToken, TokenReturnAttribute $returnAttribute = null): array|string
+	public function refreshTokens(string $refreshToken, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getAuthFacade()
