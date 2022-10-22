@@ -13,7 +13,7 @@ class Wishlists
 
 
 	public function __construct(
-		public HttpClientFacadeInterface $httpClient,
+        private HttpClientFacadeInterface $httpClient,
 	)
 	{
 	}

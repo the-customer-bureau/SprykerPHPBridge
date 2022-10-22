@@ -10,7 +10,7 @@ class Category
 	private const CATEGORY_NODES_ENDPOINT = 'category-nodes';
 
 	public function __construct(
-		public HttpClientFacadeInterface $httpClient
+        private HttpClientFacadeInterface $httpClient
 	)
 	{
 	}

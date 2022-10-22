@@ -11,7 +11,7 @@ class AbstractProduct
 	private const RELATED_ABSTRACT_PRODUCTS_ENDPOINT = 'related-products';
 
 	public function __construct(
-		public HttpClientFacadeInterface $httpClient
+        private HttpClientFacadeInterface $httpClient
 	)
 	{
 	}
