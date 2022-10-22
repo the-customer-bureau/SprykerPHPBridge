@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\SprykerBridge;
 
-use Engineered\Cart\Enums\GuestCartReturnAttribute;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -109,7 +108,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 *
 	 */
 
-	public function getCustomerCarts(string $bearerToken, array $include = null, GuestCartReturnAttribute $returnAttribute = null): array|string
+	public function getCustomerCarts(string $bearerToken, array $include = null, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getCartFacade()
@@ -130,7 +129,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 		string $customerUniqueId,
 		int $quantity = 1,
 		string $id = null,
-		GuestCartReturnAttribute $returnAttribute = null
+        ?string $returnAttribute = null
 	): array|string
 	{
 		return $this->getFactory()

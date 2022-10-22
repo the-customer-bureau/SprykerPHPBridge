@@ -2,7 +2,6 @@
 
 namespace Engineered\Cart\Domain;
 
-use Engineered\Cart\Enums\GuestCartReturnAttribute;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class Carts
@@ -17,7 +16,7 @@ class Carts
     {
     }
 
-	public function get(string $bearerToken, array $include = null, GuestCartReturnAttribute $returnAttribute = null): array|string
+	public function get(string $bearerToken, array $include = null, ?string $returnAttribute = null): array|string
 	{
 
 		$response = $this->httpClient->getProtected(self::CARTS_ENDPOINT, $bearerToken, $include);
@@ -26,20 +25,20 @@ class Carts
 		{
 			return $response;
 		}
-		if ($returnAttribute->value === 'id')
+		if ($returnAttribute === 'id')
 		{
 			return $response['data']['id'];
 		}
 
-		if (str_contains($returnAttribute->value, '_'))
+		if (str_contains($returnAttribute, '_'))
 		{
 
-			$returnAttributeArray = explode('_', $returnAttribute->value);
+			$returnAttributeArray = explode('_', $returnAttribute);
 
 			return $response['data']['attributes'][$returnAttributeArray[0]][$returnAttributeArray[1]];
 		}
 
-		return $response['data']['attributes'][$returnAttribute->value];
+		return $response['data']['attributes'][$returnAttribute];
 
 	}
 
