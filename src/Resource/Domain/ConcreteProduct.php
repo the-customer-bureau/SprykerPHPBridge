@@ -10,7 +10,7 @@ class ConcreteProduct
 	private const CONCRETE_PRODUCTS_ENDPOINT = 'concrete-products';
 
 	public function __construct(
-		public readonly HttpClientFacadeInterface $httpClient
+		public HttpClientFacadeInterface $httpClient
 	)
 	{
 	}

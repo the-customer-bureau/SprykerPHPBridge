@@ -11,7 +11,7 @@ class Carts
 	private const CARTS_ENDPOINT = "carts";
 	private const CART_ITEMS_ENDPOINT = "items";
 
-	public function __construct(public readonly HttpClientFacadeInterface $httpClient)
+	public function __construct(public HttpClientFacadeInterface $httpClient)
 	{
 	}
 

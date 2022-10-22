@@ -12,7 +12,7 @@ class RefreshToken
 
 
 	public function __construct(
-		public readonly HttpClientFacadeInterface $httpClient,
+		public HttpClientFacadeInterface $httpClient,
 	)
 	{
 	}

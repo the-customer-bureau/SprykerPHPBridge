@@ -10,8 +10,8 @@ class HttpClient
 {
 
 	public function __construct(
-		private readonly HttpClientInterface $client,
-		private readonly string              $glueApiUrl
+		private HttpClientInterface $client,
+		private string              $glueApiUrl
 	)
 	{
 
