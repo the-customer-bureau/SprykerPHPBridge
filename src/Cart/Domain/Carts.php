@@ -11,9 +11,11 @@ class Carts
 	private const CARTS_ENDPOINT = "carts";
 	private const CART_ITEMS_ENDPOINT = "items";
 
-	public function __construct(public HttpClientFacadeInterface $httpClient)
-	{
-	}
+	public function __construct(
+        private HttpClientFacadeInterface $httpClient
+    )
+    {
+    }
 
 	public function get(string $bearerToken, array $include = null, GuestCartReturnAttribute $returnAttribute = null): array|string
 	{

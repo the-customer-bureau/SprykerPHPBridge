@@ -10,9 +10,11 @@ class GuestCartItems
 
 	private const GUEST_CART_ITEMS_ENDPOINT = "guest-cart-items";
 
-	public function __construct(public HttpClientFacadeInterface $httpClient)
-	{
-	}
+	public function __construct(
+        private HttpClientFacadeInterface $httpClient
+    )
+    {
+    }
 
 
 	public function add(
