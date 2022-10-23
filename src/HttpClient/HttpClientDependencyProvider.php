@@ -10,17 +10,18 @@ use Symfony\Component\HttpClient\NativeHttpClient;
 
 final class HttpClientDependencyProvider extends AbstractDependencyProvider
 {
-	public const CONCRETE_HTTP_CLIENT = 'CONCRETE_HTTP_CLIENT';
+    public const CONCRETE_HTTP_CLIENT = 'CONCRETE_HTTP_CLIENT';
 
-	public function provideModuleDependencies(Container $container): void
-	{
-		$this->addConcreteHttpClient($container);
-	}
+    public function provideModuleDependencies(Container $container): void
+    {
+        $this->addConcreteHttpClient($container);
+    }
 
-	private function addConcreteHttpClient(Container $container) {
-		$container->set(
-			self::CONCRETE_HTTP_CLIENT,
-			new NativeHttpClient()
-		);
-	}
+    private function addConcreteHttpClient(Container $container): void
+    {
+        $container->set(
+            self::CONCRETE_HTTP_CLIENT,
+            new NativeHttpClient()
+        );
+    }
 }

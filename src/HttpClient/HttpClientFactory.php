@@ -14,21 +14,18 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
  */
 final class HttpClientFactory extends AbstractFactory
 {
+    public function createClient(): HttpClient
+    {
+        return new HttpClient(
+            $this->getConcreteHttpClient(),
+            $this->getConfig()->getGlueUrl()
+        );
+    }
 
-	public function createClient(): HttpClient
-	{
-		return new HttpClient(
-			$this->getConcreteHttpClient(),
-			$this->getConfig()->getGlueUrl()
-		);
-	}
-
-
-	private function getConcreteHttpClient(): HttpClientInterface
-	{
-		return $this->getProvidedDependency(
-			HttpClientDependencyProvider::CONCRETE_HTTP_CLIENT
-		);
-
-	}
+    private function getConcreteHttpClient(): HttpClientInterface
+    {
+        return $this->getProvidedDependency(
+            HttpClientDependencyProvider::CONCRETE_HTTP_CLIENT
+        );
+    }
 }

@@ -11,173 +11,157 @@ use Gacela\Framework\AbstractFacade;
  */
 final class SprykerBridgeFacade extends AbstractFacade
 {
+    // TODO - use an array to retrieve the includes - MAYBE ACROSS ALL APPLICABLE ENDPOINTS?
+    // TODO - Use UNION TYPES to allow selection of returned attributes... do something cool! ... I DID! ENUMS!
 
-	// TODO - use an array to retrieve the includes - MAYBE ACROSS ALL APPLICABLE ENDPOINTS?
-	// TODO - Use UNION TYPES to allow selection of returned attributes... do something cool! ... I DID! ENUMS!
+    /****
+     *
+     *
+     * AUTH
+     *
+     */
 
-	/****
-	 *
-	 *
-	 * AUTH
-	 *
-	 */
+    public function getAccessToken(string $username, string $password, ?string $returnAttribute = null): array|string
+    {
+        return $this->getFactory()
+            ->getAuthFacade()
+            ->getAccessToken($username, $password, $returnAttribute);
+    }
 
+    public function refreshTokens(string $refreshToken, ?string $returnAttribute = null): array|string
+    {
+        return $this->getFactory()
+            ->getAuthFacade()
+            ->refreshTokens($refreshToken, $returnAttribute);
+    }
 
-	public function getAccessToken(string $username, string $password, ?string $returnAttribute = null): array|string
-	{
-		return $this->getFactory()
-			->getAuthFacade()
-			->getAccessToken($username, $password, $returnAttribute);
-	}
+    /****
+     *
+     *
+     * CATEGORIES
+     *
+     */
 
-	public function refreshTokens(string $refreshToken, ?string $returnAttribute = null): array|string
-	{
-		return $this->getFactory()
-			->getAuthFacade()
-			->refreshTokens($refreshToken, $returnAttribute);
-	}
+    public function getCategory(int $id): array
+    {
+        return $this->getFactory()
+            ->getResourceFacade()
+            ->getCategory($id);
+    }
 
+    public function getCategoryTrees(): array
+    {
+        return $this->getFactory()
+            ->getCollectionsFacade()
+            ->getCategoryTrees();
+    }
 
-	/****
-	 *
-	 *
-	 * CATEGORIES
-	 *
-	 */
+    /****
+     *
+     *
+     * PRODUCTS
+     *
+     */
 
-	public function getCategory(int $id): array
-	{
-		return $this->getFactory()
-			->getResourceFacade()
-			->getCategory($id);
+    public function getAbstractProduct(string $sku): array
+    {
+        return $this->getFactory()
+            ->getResourceFacade()
+            ->getAbstractProduct($sku);
+    }
 
-	}
+    public function getRelatedAbstractProducts(string $sku): array
+    {
+        return $this->getFactory()
+            ->getResourceFacade()
+            ->getRelatedAbstractProducts($sku);
+    }
 
-	public function getCategoryTrees(): array
-	{
-		return $this->getFactory()
-			->getCollectionsFacade()
-			->getCategoryTrees();
-	}
+    public function getConcreteProduct(string $sku): array
+    {
+        return $this->getFactory()
+            ->getResourceFacade()
+            ->getConcreteProduct($sku);
+    }
 
+    public function searchAbstractProducts(string $searchTerm): array
+    {
+        return $this->getFactory()
+            ->getCollectionsFacade()
+            ->searchAbstractProducts($searchTerm);
+    }
 
-	/****
-	 *
-	 *
-	 * PRODUCTS
-	 *
-	 */
+    /****
+     *
+     *
+     * CARTS
+     *
+     */
 
+    public function getCustomerCarts(string $bearerToken, array $include = null, ?string $returnAttribute = null): array|string
+    {
+        return $this->getFactory()
+            ->getCartFacade()
+            ->getCustomerCarts($bearerToken, $include, $returnAttribute);
+    }
 
-	public function getAbstractProduct(string $sku): array
-	{
-		return $this->getFactory()
-			->getResourceFacade()
-			->getAbstractProduct($sku);
+    public function addToCustomerCart(string $sku, int $quantity, string $cartId, string $bearerToken): array
+    {
+        return $this->getFactory()
+            ->getCartFacade()
+            ->addToCustomerCart($sku, $quantity, $cartId, $bearerToken);
+    }
 
-	}
-
-	public function getRelatedAbstractProducts(string $sku): array
-	{
-		return $this->getFactory()
-			->getResourceFacade()
-			->getRelatedAbstractProducts($sku);
-
-	}
-
-	public function getConcreteProduct(string $sku): array
-	{
-		return $this->getFactory()
-			->getResourceFacade()
-			->getConcreteProduct($sku);
-
-	}
-
-	public function searchAbstractProducts(string $searchTerm): array
-	{
-		return $this->getFactory()
-			->getCollectionsFacade()
-			->searchAbstractProducts($searchTerm);
-	}
-
-
-	/****
-	 *
-	 *
-	 * CARTS
-	 *
-	 */
-
-	public function getCustomerCarts(string $bearerToken, array $include = null, ?string $returnAttribute = null): array|string
-	{
-		return $this->getFactory()
-			->getCartFacade()
-			->getCustomerCarts($bearerToken, $include, $returnAttribute);
-
-	}
-
-	public function addToCustomerCart(string $sku, int $quantity, string $cartId, string $bearerToken): array
-	{
-		return $this->getFactory()
-			->getCartFacade()
-			->addToCustomerCart($sku, $quantity, $cartId, $bearerToken);
-
-	}
-
-	public function addToGuestCart(
-		string $concreteSku,
-		string $customerUniqueId,
-		int $quantity = 1,
-		string $id = null,
+    public function addToGuestCart(
+        string $concreteSku,
+        string $customerUniqueId,
+        int $quantity = 1,
+        string $id = null,
         ?string $returnAttribute = null
-	): array|string
-	{
-		return $this->getFactory()
-			->getCartFacade()
-			->addToGuestCart($concreteSku,$quantity,$customerUniqueId,$id,$returnAttribute
-		);
+    ): array|string {
+        return $this->getFactory()
+            ->getCartFacade()
+            ->addToGuestCart(
+                $concreteSku,
+                $quantity,
+                $customerUniqueId,
+                $id,
+                $returnAttribute
+            );
+    }
 
-	}
+    /****
+     *
+     *
+     * WISHLISTS
+     *
+     */
 
+    public function getWishlists(string $bearerToken): array
+    {
+        return $this->getFactory()
+            ->getCustomerFacade()
+            ->getWishLists($bearerToken);
+    }
 
-	/****
-	 *
-	 *
-	 * WISHLISTS
-	 *
-	 */
+    public function getWishlist(string $wishlistId, string $bearerToken): array
+    {
+        return $this->getFactory()
+            ->getCustomerFacade()
+            ->getWishList($wishlistId, $bearerToken);
+    }
 
+    public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null): array|string
+    {
+        return $this->getFactory()
+            ->getCustomerFacade()
+            ->createWishlist($name, $bearerToken, $returnAttribute);
+    }
 
-	public function getWishlists(string $bearerToken): array
-	{
-		return $this->getFactory()
-			->getCustomerFacade()
-			->getWishLists($bearerToken);
-
-	}
-
-	public function getWishlist(string $wishlistId, string $bearerToken): array
-	{
-		return $this->getFactory()
-			->getCustomerFacade()
-			->getWishList($wishlistId, $bearerToken);
-
-	}
-
-	public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null): array|string
-	{
-		return $this->getFactory()
-			->getCustomerFacade()
-			->createWishlist($name, $bearerToken, $returnAttribute);
-
-	}
-
-	public function addToWishlist(string $wishlistId, string $sku, string $bearerToken): array
-	{
-		return $this->getFactory()
-			->getCustomerFacade()
-			->addToWishlist($wishlistId, $sku, $bearerToken);
-
-	}
-
+    public function addToWishlist(string $wishlistId, string $sku, string $bearerToken): array
+    {
+        return $this->getFactory()
+            ->getCustomerFacade()
+            ->addToWishlist($wishlistId, $sku, $bearerToken);
+    }
 }

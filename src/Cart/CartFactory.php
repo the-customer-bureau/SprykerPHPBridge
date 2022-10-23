@@ -15,27 +15,24 @@ use Gacela\Framework\AbstractFactory;
  */
 final class CartFactory extends AbstractFactory
 {
+    public function createGuestCartItems(): GuestCartItems
+    {
+        return new GuestCartItems(
+            $this->getHttpClient()
+        );
+    }
 
-	public function createGuestCartItems(): GuestCartItems
-	{
-		return new GuestCartItems(
-			$this->getHttpClient()
-		);
-	}
+    public function createCustomerCarts(): Carts
+    {
+        return new Carts(
+            $this->getHttpClient()
+        );
+    }
 
-	public function createCustomerCarts(): Carts
-	{
-		return new Carts(
-			$this->getHttpClient()
-		);
-	}
-
-
-	private function getHttpClient(): HttpClientFacade
-	{
-		return $this->getProvidedDependency(
-			CartDependencyProvider::FACADE_HTTP_CLIENT
-		);
-	}
-
+    private function getHttpClient(): HttpClientFacade
+    {
+        return $this->getProvidedDependency(
+            CartDependencyProvider::FACADE_HTTP_CLIENT
+        );
+    }
 }

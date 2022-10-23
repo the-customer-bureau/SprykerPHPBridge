@@ -14,24 +14,20 @@ use Gacela\Framework\AbstractFactory;
  */
 final class AuthFactory extends AbstractFactory
 {
+    public function createAccessToken(): AccessToken
+    {
+        return new AccessToken($this->getHttpClient());
+    }
 
-	public function createAccessToken(): AccessToken
-	{
-		return new AccessToken($this->getHttpClient());
-	}
+    public function createRefreshToken(): RefreshToken
+    {
+        return new RefreshToken($this->getHttpClient());
+    }
 
-	public function createRefreshToken(): RefreshToken
-	{
-		return new RefreshToken($this->getHttpClient());
-	}
-
-	private function getHttpClient(): HttpClientFacade
-	{
-		return $this->getProvidedDependency(
-			AuthDependencyProvider::FACADE_HTTP_CLIENT
-		);
-	}
-
-
-
+    private function getHttpClient(): HttpClientFacade
+    {
+        return $this->getProvidedDependency(
+            AuthDependencyProvider::FACADE_HTTP_CLIENT
+        );
+    }
 }

@@ -8,6 +8,4 @@ use Gacela\Framework\AbstractConfig;
 
 final class CollectionsConfig extends AbstractConfig
 {
-
-
 }
