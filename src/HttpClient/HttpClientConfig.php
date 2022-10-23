@@ -8,9 +8,8 @@ use Gacela\Framework\AbstractConfig;
 
 final class HttpClientConfig extends AbstractConfig
 {
-
-	public function getGlueUrl(): string
-	{
-		return $this->get('GLUE_API_URL');
-	}
+    public function getGlueUrl(): string
+    {
+        return $this->get('GLUE_API_URL');
+    }
 }

@@ -17,42 +17,38 @@ use Gacela\Framework\AbstractFactory;
  */
 final class SprykerBridgeFactory extends AbstractFactory
 {
+    public function getCollectionsFacade(): CollectionsFacade
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_COLLECTIONS
+        );
+    }
 
-	public function getCollectionsFacade(): CollectionsFacade
-	{
-		return $this->getProvidedDependency(
-			SprykerBridgeDependencyProvider::FACADE_COLLECTIONS
-		);
-	}
+    public function getAuthFacade(): AuthFacade
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_AUTH
+        );
+    }
 
+    public function getCartFacade(): CartFacade
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_CART
+        );
+    }
 
-	public function getAuthFacade(): AuthFacade
-	{
-		return $this->getProvidedDependency(
-			SprykerBridgeDependencyProvider::FACADE_AUTH
-		);
-	}
+    public function getResourceFacade(): ResourceFacade
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_RESOURCE
+        );
+    }
 
-	public function getCartFacade(): CartFacade
-	{
-		return $this->getProvidedDependency(
-			SprykerBridgeDependencyProvider::FACADE_CART
-		);
-	}
-
-	public function getResourceFacade(): ResourceFacade
-	{
-		return $this->getProvidedDependency(
-			SprykerBridgeDependencyProvider::FACADE_RESOURCE
-		);
-	}
-
-	public function getCustomerFacade(): CustomerFacade
-	{
-		return $this->getProvidedDependency(
-			SprykerBridgeDependencyProvider::FACADE_CUSTOMER
-		);
-	}
-
-
+    public function getCustomerFacade(): CustomerFacade
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_CUSTOMER
+        );
+    }
 }

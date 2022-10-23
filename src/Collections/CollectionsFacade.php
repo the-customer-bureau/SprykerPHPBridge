@@ -11,14 +11,13 @@ use Gacela\Framework\AbstractFacade;
  */
 final class CollectionsFacade extends AbstractFacade
 {
+    public function getCategoryTrees(): array
+    {
+        return $this->getFactory()->createCategoryTrees()->get();
+    }
 
-	public function getCategoryTrees(): array
-	{
-		return $this->getFactory()->createCategoryTrees()->get();
-	}
-
-	public function searchAbstractProducts(string $searchTerm): array
-	{
-		return $this->getFactory()->createAbstractProducts()->get($searchTerm);
-	}
+    public function searchAbstractProducts(string $searchTerm): array
+    {
+        return $this->getFactory()->createAbstractProducts()->get($searchTerm);
+    }
 }
