@@ -11,8 +11,6 @@ use Gacela\Framework\AbstractFacade;
  */
 final class SprykerBridgeFacade extends AbstractFacade
 {
-    // TODO - use an array to retrieve the includes - MAYBE ACROSS ALL APPLICABLE ENDPOINTS?
-    // TODO - Use UNION TYPES to allow selection of returned attributes... do something cool! ... I DID! ENUMS!
 
     /****
      *
