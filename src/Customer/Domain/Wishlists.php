@@ -58,7 +58,7 @@ class Wishlists
 
     public function delete(string $wishlistId, string $sku, string $bearerToken): array
     {
-        return $this->httpClient->delete(self::WISHLISTS_ENDPOINT . '/' . $wishlistId, null, $bearerToken);
+        return $this->httpClient->delete(self::WISHLISTS_ENDPOINT . '/' . $wishlistId, [], null, $bearerToken);
     }
 
     private function getCreationPayload(string $name): array

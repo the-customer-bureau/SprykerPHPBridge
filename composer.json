@@ -18,7 +18,9 @@
   "require-dev": {
     "roave/security-advisories": "dev-latest",
     "phpunit/phpunit": "^9.5",
-    "friendsofphp/php-cs-fixer": "^3.12"
+    "friendsofphp/php-cs-fixer": "^3.12",
+    "phpstan/phpstan": "^1.8",
+    "vimeo/psalm": "^4.29"
   },
   "autoload": {
     "psr-4": {
