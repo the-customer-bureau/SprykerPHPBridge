@@ -70,7 +70,7 @@ class AbstractProductTest extends TestCase
         $concreteProduct = new AbstractProduct($this->mockHttpClientFacade);
 
         $response = $concreteProduct->getReviewCount('208');
-        $this->assertEquals('0', $response);
+        $this->assertEquals(0, $response);
 
         $response = $concreteProduct->getName('208');
         $this->assertEquals('Toshiba CAMILEO P20', $response);

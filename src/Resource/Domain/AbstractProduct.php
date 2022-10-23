@@ -26,7 +26,7 @@ class AbstractProduct
         return $this->httpClient->get(self::ABSTRACT_PRODUCTS_ENDPOINT . '/' . $sku . '/' . self::RELATED_ABSTRACT_PRODUCTS_ENDPOINT);
     }
 
-    public function getReviewCount(string $sku): string
+    public function getReviewCount(string $sku): int
     {
         $response = $this->get($sku);
 
