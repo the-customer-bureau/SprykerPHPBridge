@@ -28,5 +28,54 @@ class AbstractProduct
 
 	}
 
+	public function getReviewCount(string $sku): string
+	{
+		$response = $this->get($sku);
+
+		return $response['data']['attributes']['reviewCount'];
+
+	}
+
+	public function getName(string $sku): string
+	{
+		$response = $this->get($sku);
+
+		return $response['data']['attributes']['name'];
+
+	}
+
+	public function getDescription(string $sku): string
+	{
+		$response = $this->get($sku);
+
+		return $response['data']['attributes']['description'];
+
+	}
+
+	public function getMetaTitle(string $sku): string
+	{
+		$response = $this->get($sku);
+
+		return $response['data']['attributes']['metaTitle'];
+
+	}
+
+	public function getMetaKeywords(string $sku): string
+	{
+		$response = $this->get($sku);
+
+		return $response['data']['attributes']['metaKeywords'];
+
+	}
+
+	public function getMetaDescription(string $sku): string
+	{
+		$response = $this->get($sku);
+
+		return $response['data']['attributes']['metaDescription'];
+
+	}
+
+
 
 }
