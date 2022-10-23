@@ -167,13 +167,12 @@ final class SprykerBridgeFacade extends AbstractFacade
             ->addToWishlist($wishlistId, $sku, $bearerToken);
     }
 
-	/****
-	 *
-	 *
-	 * NEW API?
-	 *
-	 */
-
+    /****
+     *
+     *
+     * NEW API?
+     *
+     */
 
     public function resource(): ResourceFacade
     {
