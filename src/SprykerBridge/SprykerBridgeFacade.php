@@ -11,7 +11,6 @@ use Gacela\Framework\AbstractFacade;
  */
 final class SprykerBridgeFacade extends AbstractFacade
 {
-
     /****
      *
      *
