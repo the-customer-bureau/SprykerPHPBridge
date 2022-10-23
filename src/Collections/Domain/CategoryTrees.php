@@ -12,7 +12,7 @@ class CategoryTrees
 
 
 	public function __construct(
-		public readonly HttpClientFacadeInterface $httpClient,
+		private HttpClientFacadeInterface $httpClient,
 	)
 	{
 	}

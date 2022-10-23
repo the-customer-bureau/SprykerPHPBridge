@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\SprykerBridge;
 
-use Engineered\Auth\Enums\TokenReturnAttribute;
-use Engineered\Cart\Enums\GuestCartReturnAttribute;
-use Engineered\Customer\Enums\WishlistsAttribute;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -26,14 +23,14 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 */
 
 
-	public function getAccessToken(string $username, string $password, TokenReturnAttribute $returnAttribute = null): array|string
+	public function getAccessToken(string $username, string $password, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getAuthFacade()
 			->getAccessToken($username, $password, $returnAttribute);
 	}
 
-	public function refreshTokens(string $refreshToken, TokenReturnAttribute $returnAttribute = null): array|string
+	public function refreshTokens(string $refreshToken, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getAuthFacade()
@@ -111,7 +108,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 	 *
 	 */
 
-	public function getCustomerCarts(string $bearerToken, array $include = null, GuestCartReturnAttribute $returnAttribute = null): array|string
+	public function getCustomerCarts(string $bearerToken, array $include = null, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getCartFacade()
@@ -132,7 +129,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 		string $customerUniqueId,
 		int $quantity = 1,
 		string $id = null,
-		GuestCartReturnAttribute $returnAttribute = null
+        ?string $returnAttribute = null
 	): array|string
 	{
 		return $this->getFactory()
@@ -167,7 +164,7 @@ final class SprykerBridgeFacade extends AbstractFacade
 
 	}
 
-	public function createWishlist(string $name, string $bearerToken, WishlistsAttribute $returnAttribute = null): array|string
+	public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null): array|string
 	{
 		return $this->getFactory()
 			->getCustomerFacade()

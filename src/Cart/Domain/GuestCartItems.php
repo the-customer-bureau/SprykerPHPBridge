@@ -2,7 +2,6 @@
 
 namespace Engineered\Cart\Domain;
 
-use Engineered\Cart\Enums\GuestCartReturnAttribute;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class GuestCartItems
@@ -10,9 +9,11 @@ class GuestCartItems
 
 	private const GUEST_CART_ITEMS_ENDPOINT = "guest-cart-items";
 
-	public function __construct(public readonly HttpClientFacadeInterface $httpClient)
-	{
-	}
+	public function __construct(
+        private HttpClientFacadeInterface $httpClient
+    )
+    {
+    }
 
 
 	public function add(
@@ -20,7 +21,7 @@ class GuestCartItems
 		int $quantity,
 		string $customerUniqueId,
 		string $id = null,
-		GuestCartReturnAttribute $returnAttribute = null
+        ?string $returnAttribute = null
 	): array|string
 	{
 
@@ -30,20 +31,20 @@ class GuestCartItems
 		{
 			return $response;
 		}
-		if ($returnAttribute->value === 'id')
+		if ($returnAttribute === 'id')
 		{
 			return $response['data']['id'];
 		}
 
-		if (str_contains($returnAttribute->value, '_'))
+		if (str_contains($returnAttribute, '_'))
 		{
 
-			$returnAttributeArray = explode('_', $returnAttribute->value);
+			$returnAttributeArray = explode('_', $returnAttribute);
 
 			return $response['data']['attributes'][$returnAttributeArray[0]][$returnAttributeArray[1]];
 		}
 
-		return $response['data']['attributes'][$returnAttribute->value];
+		return $response['data']['attributes'][$returnAttribute];
 
 	}
 

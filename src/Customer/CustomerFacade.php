@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\Customer;
 
-use Engineered\Customer\Enums\WishlistsAttribute;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -27,7 +26,7 @@ final class CustomerFacade extends AbstractFacade
 			->get( $wishlistId, $bearerToken);
 	}
 
-	public function createWishlist(string $name, string $bearerToken, WishlistsAttribute $returnAttribute = null):  array|string
+	public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null):  array|string
 	{
 		return $this->getFactory()
 			->createWishlists()
