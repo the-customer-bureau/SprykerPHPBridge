@@ -2,18 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Unit;
+namespace EngineeredTests\Unit;
 
 use Engineered\HttpClient\HttpClientDependencyProvider;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 use Engineered\Resource\Domain\AbstractProduct;
 use Engineered\SprykerBridge;
-
+use EngineeredTests\Fakes\FakeHttpClientDependencyProvider;
 use Gacela\Framework\ClassResolver\GlobalInstance\AnonymousGlobal;
 use PHPUnit\Framework\TestCase;
-
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Tests\Fakes\FakeHttpClientDependencyProvider;
 
 class AbstractProductTest extends TestCase
 {

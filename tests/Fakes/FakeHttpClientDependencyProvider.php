@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Fakes;
+namespace EngineeredTests\Fakes;
 
 use Engineered\HttpClient\HttpClientDependencyProvider;
 use Gacela\Framework\AbstractDependencyProvider;

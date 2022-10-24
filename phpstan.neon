@@ -4,3 +4,7 @@ parameters:
         - %currentWorkingDirectory%/src/
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
+
+    ignoreErrors:
+        - '#Cannot cast mixed to *#'
+        - '#Method Engineered\\.*Factory::get.* should return .*Interface but returns mixed#'

@@ -9,7 +9,7 @@ use Gacela\Framework\AbstractFacade;
 /**
  * @method CustomerFactory getFactory()
  */
-final class CustomerFacade extends AbstractFacade
+final class CustomerFacade extends AbstractFacade implements CustomerFacadeInterface
 {
     public function getWishLists(string $bearerToken): array
     {

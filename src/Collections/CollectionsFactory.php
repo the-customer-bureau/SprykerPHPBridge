@@ -6,7 +6,7 @@ namespace Engineered\Collections;
 
 use Engineered\Collections\Domain\AbstractProducts;
 use Engineered\Collections\Domain\CategoryTrees;
-use Engineered\HttpClient\HttpClientFacade;
+use Engineered\HttpClient\HttpClientFacadeInterface;
 use Gacela\Framework\AbstractFactory;
 
 /**
@@ -28,7 +28,7 @@ final class CollectionsFactory extends AbstractFactory
         );
     }
 
-    private function getHttpClient(): HttpClientFacade
+    private function getHttpClient(): HttpClientFacadeInterface
     {
         return $this->getProvidedDependency(
             CollectionsDependencyProvider::FACADE_HTTP_CLIENT

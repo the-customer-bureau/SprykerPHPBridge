@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\Resource;
 
-use Engineered\HttpClient\HttpClientFacade;
+use Engineered\HttpClient\HttpClientFacadeInterface;
 use Engineered\Resource\Domain\AbstractProduct;
 use Engineered\Resource\Domain\Category;
 use Engineered\Resource\Domain\ConcreteProduct;
@@ -30,7 +30,7 @@ final class ResourceFactory extends AbstractFactory
         return new ConcreteProduct($this->getHttpClient());
     }
 
-    private function getHttpClient(): HttpClientFacade
+    private function getHttpClient(): HttpClientFacadeInterface
     {
         return $this->getProvidedDependency(
             ResourceDependencyProvider::FACADE_HTTP_CLIENT

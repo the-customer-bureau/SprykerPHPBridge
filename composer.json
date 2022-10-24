@@ -29,10 +29,11 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/"
+      "EngineeredTests\\": "tests/"
     }
   },
   "scripts": {
+    "test": "./vendor/bin/phpunit",
     "csfix": "./vendor/bin/php-cs-fixer fix",
     "csrun": "./vendor/bin/php-cs-fixer fix --dry-run"
   }
