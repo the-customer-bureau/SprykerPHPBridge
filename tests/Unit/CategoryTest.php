@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace EngineeredTests\Unit;
 
+use Engineered\Category\Domain\Category;
 use Engineered\HttpClient\HttpClientFacadeInterface;
-use Engineered\Resource\Domain\Category;
+
 use PHPUnit\Framework\TestCase;
 
 class CategoryTest extends TestCase

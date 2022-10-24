@@ -2,17 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Engineered\Resource;
+namespace Engineered\AbstractProduct;
 
-interface ResourceFacadeInterface
+/**
+ * @method AbstractProductFactory getFactory()
+ */
+interface AbstractProductFacadeInterface
 {
-    public function getCategory(int $id): array;
-
-    public function getAbstractProduct(string $sku): array;
-
-    public function getRelatedAbstractProducts(string $sku): array;
-
-    public function getConcreteProduct(string $sku): array;
+    public function get(string $sku): array;
 
     public function getReviewCount(string $sku): int;
 

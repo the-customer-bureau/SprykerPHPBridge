@@ -2,37 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Engineered\Resource;
+namespace Engineered\ConcreteProduct;
 
 use Gacela\Framework\AbstractFacade;
 
 /**
- * @method ResourceFactory getFactory()
+ * @method ConcreteProductFactory getFactory()
  */
-final class ResourceFacade extends AbstractFacade implements ResourceFacadeInterface
+final class ConcreteProductFacade extends AbstractFacade implements ConcreteProductFacadeInterface
 {
-    public function getCategory(int $id): array
-    {
-        return $this->getFactory()
-            ->createCategory()
-            ->get($id);
-    }
-
-    public function getAbstractProduct(string $sku): array
-    {
-        return $this->getFactory()
-            ->createAbstractProduct()
-            ->get($sku);
-    }
-
-    public function getRelatedAbstractProducts(string $sku): array
-    {
-        return $this->getFactory()
-            ->createAbstractProduct()
-            ->getRelated($sku);
-    }
-
-    public function getConcreteProduct(string $sku): array
+    public function get(string $sku): array
     {
         return $this->getFactory()
             ->createConcreteProduct()
@@ -42,42 +21,42 @@ final class ResourceFacade extends AbstractFacade implements ResourceFacadeInter
     public function getReviewCount(string $sku): int
     {
         return $this->getFactory()
-            ->createAbstractProduct()
+            ->createConcreteProduct()
             ->getReviewCount($sku);
     }
 
     public function getName(string $sku): string
     {
         return $this->getFactory()
-            ->createAbstractProduct()
+            ->createConcreteProduct()
             ->getName($sku);
     }
 
     public function getDescription(string $sku): string
     {
         return $this->getFactory()
-            ->createAbstractProduct()
+            ->createConcreteProduct()
             ->getDescription($sku);
     }
 
     public function getMetaTitle(string $sku): string
     {
         return $this->getFactory()
-            ->createAbstractProduct()
+            ->createConcreteProduct()
             ->getMetaTitle($sku);
     }
 
     public function getMetaKeywords(string $sku): string
     {
         return $this->getFactory()
-            ->createAbstractProduct()
+            ->createConcreteProduct()
             ->getMetaKeywords($sku);
     }
 
     public function getMetaDescription(string $sku): string
     {
         return $this->getFactory()
-            ->createAbstractProduct()
+            ->createConcreteProduct()
             ->getMetaDescription($sku);
     }
 }
