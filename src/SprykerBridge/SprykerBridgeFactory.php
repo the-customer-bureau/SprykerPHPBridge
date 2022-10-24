@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Engineered\SprykerBridge;
 
-use Engineered\AbstractProduct\AbstractProductFacade;
+use Engineered\AbstractProduct\AbstractProductFacadeInterface;
 use Engineered\Auth\AuthFacadeInterface;
 use Engineered\Cart\CartFacadeInterface;
-use Engineered\Category\CategoryFacade;
+use Engineered\Category\CategoryFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 
 use Gacela\Framework\AbstractFactory;
@@ -38,14 +38,14 @@ final class SprykerBridgeFactory extends AbstractFactory
         );
     }
 
-    public function getAbstractProductFacade(): AbstractProductFacade
+    public function getAbstractProductFacade(): AbstractProductFacadeInterface
     {
         return $this->getProvidedDependency(
             SprykerBridgeDependencyProvider::FACADE_ABSTRACT_PRODUCT
         );
     }
 
-    public function getCategoryFace(): CategoryFacade
+    public function getCategoryFace(): CategoryFacadeInterface
     {
         return $this->getProvidedDependency(
             SprykerBridgeDependencyProvider::FACADE_CATEGORY

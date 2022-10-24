@@ -9,7 +9,7 @@ use Gacela\Framework\AbstractFacade;
 /**
  * @method CategoryFactory getFactory()
  */
-final class CategoryFacade extends AbstractFacade
+final class CategoryFacade extends AbstractFacade implements CategoryFacadeInterface
 {
     public function get(int $id): array
     {
