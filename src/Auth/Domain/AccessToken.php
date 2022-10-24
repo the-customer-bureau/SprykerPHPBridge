@@ -15,15 +15,21 @@ class AccessToken
     ) {
     }
 
-    public function get(string $username, string $password, ?string $returnAttribute = null): array|string
+    public function get(string $username, string $password): array
     {
-        $response = $this->httpClient->post(self::ACCESS_TOKEN_ENDPOINT, $this->getPayload($username, $password));
+        return $this->httpClient->post(self::ACCESS_TOKEN_ENDPOINT, $this->getPayload($username, $password));
+    }
 
-        if ($returnAttribute === null) {
-            return $response;
-        }
+    public function getAccessToken(string $username, string $password): string
+    {
+        $response = $this->get($username, $password);
 
-        return $response['data']['attributes'][$returnAttribute];
+        return $response['data']['attributes']['accessToken'];
+    }
+
+    public function getArray(string $username, string $password): array
+    {
+        return $this->get($username, $password);
     }
 
     private function getPayload(string $username, string $password): array

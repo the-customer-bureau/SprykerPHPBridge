@@ -6,7 +6,9 @@ namespace Engineered\Auth;
 
 interface AuthFacadeInterface
 {
-    public function getAccessToken(string $username, string $password, ?string $returnAttribute = null): array|string;
+    public function getAccessToken(string $username, string $password): string;
 
-    public function refreshTokens(string $refreshToken, ?string $returnAttribute = null): array|string;
+    public function getAccessTokenArray(string $username, string $password): array;
+
+    public function refreshTokens(string $refreshToken): array;
 }

@@ -8,8 +8,10 @@ use Engineered\AbstractProduct\AbstractProductFacadeInterface;
 use Engineered\Auth\AuthFacadeInterface;
 use Engineered\Cart\CartFacadeInterface;
 use Engineered\Category\CategoryFacadeInterface;
+use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 
+use Engineered\Wishlist\WishlistFacadeInterface;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -17,13 +19,6 @@ use Gacela\Framework\AbstractFacade;
  */
 final class SprykerBridgeFacade extends AbstractFacade
 {
-    /****
-     *
-     *
-     * NEW API?
-     *
-     */
-
     public function customer(): CustomerFacadeInterface
     {
         return $this->getFactory()->getCustomerFacade();
@@ -43,8 +38,19 @@ final class SprykerBridgeFacade extends AbstractFacade
     {
         return $this->getFactory()->getAbstractProductFacade();
     }
+
+    public function concreteProduct(): ConcreteProductFacadeInterface
+    {
+        return $this->getFactory()->getConcreteProductFacade();
+    }
+
     public function category(): CategoryFacadeInterface
     {
         return $this->getFactory()->getCategoryFacade();
+    }
+
+    public function wishlist(): WishListFacadeInterface
+    {
+        return $this->getFactory()->getWishListFacade();
     }
 }

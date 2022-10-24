@@ -8,8 +8,10 @@ use Engineered\AbstractProduct\AbstractProductFacadeInterface;
 use Engineered\Auth\AuthFacadeInterface;
 use Engineered\Cart\CartFacadeInterface;
 use Engineered\Category\CategoryFacadeInterface;
+use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 
+use Engineered\Wishlist\WishlistFacadeInterface;
 use Gacela\Framework\AbstractFactory;
 
 /**
@@ -45,10 +47,24 @@ final class SprykerBridgeFactory extends AbstractFactory
         );
     }
 
+    public function getConcreteProductFacade(): ConcreteProductFacadeInterface
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_CONCRETE_PRODUCT
+        );
+    }
+
     public function getCategoryFacade(): CategoryFacadeInterface
     {
         return $this->getProvidedDependency(
             SprykerBridgeDependencyProvider::FACADE_CATEGORY
+        );
+    }
+
+    public function getWishListFacade(): WishListFacadeInterface
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_WISHLIST
         );
     }
 }
