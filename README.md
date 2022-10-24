@@ -32,18 +32,18 @@ $sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 
 
 // grab the category trees:
-$categoryTress = $sprykerBridge->getCategoryTrees();
+$categoryTress = $sprykerBridge->category->getTrees();
 
 // grab a single category
-$category = $sprykerBridge->getCategory(4);
+$category = $sprykerBridge->category->get(4);
 
 // grab products
-$abstractProduct = $sprykerBridge->getAbstractProduct(202);
-$concreteProduct = $sprykerBridge->getConcreteProduct("209_12554247");
-$relatedProducts = $sprykerBridge->getRelatedAbstractProducts(202);
+$abstractProduct = $sprykerBridge->abstractProduct()->get(202);
+$concreteProduct = $sprykerBridge->concreteProduct()->get("209_12554247");
+$relatedProducts = $sprykerBridge->abstractProduct()->getRelated(202);
 
 // even search products
-$sprykerBridge->searchAbstractProducts('NEX-VG20EH');
+$sprykerBridge->abstractProduct()->search('NEX-VG20EH');
 
 // getting more advanced:
 
