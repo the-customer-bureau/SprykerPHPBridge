@@ -13,19 +13,15 @@ use Gacela\Framework\AbstractFactory;
  */
 final class CategoryFactory extends AbstractFactory
 {
+    public function createCategory(): Category
+    {
+        return new Category($this->getHttpClient());
+    }
 
-	public function createCategory(): Category
-	{
-		return new Category($this->getHttpClient());
-	}
-
-
-
-	private function getHttpClient(): HttpClientFacadeInterface
-	{
-		return $this->getProvidedDependency(
-			CategoryDependencyProvider::FACADE_HTTP_CLIENT
-		);
-	}
-
+    private function getHttpClient(): HttpClientFacadeInterface
+    {
+        return $this->getProvidedDependency(
+            CategoryDependencyProvider::FACADE_HTTP_CLIENT
+        );
+    }
 }

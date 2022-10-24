@@ -8,9 +8,8 @@ use Engineered\AbstractProduct\AbstractProductFacade;
 use Engineered\Auth\AuthFacadeInterface;
 use Engineered\Cart\CartFacadeInterface;
 use Engineered\Category\CategoryFacade;
-use Engineered\Category\Domain\Category;
-use Engineered\Collections\CollectionsFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
+
 use Gacela\Framework\AbstractFactory;
 
 /**
@@ -18,13 +17,6 @@ use Gacela\Framework\AbstractFactory;
  */
 final class SprykerBridgeFactory extends AbstractFactory
 {
-    public function getCollectionsFacade(): CollectionsFacadeInterface
-    {
-        return $this->getProvidedDependency(
-            SprykerBridgeDependencyProvider::FACADE_COLLECTIONS
-        );
-    }
-
     public function getAuthFacade(): AuthFacadeInterface
     {
         return $this->getProvidedDependency(
@@ -52,6 +44,7 @@ final class SprykerBridgeFactory extends AbstractFactory
             SprykerBridgeDependencyProvider::FACADE_ABSTRACT_PRODUCT
         );
     }
+
     public function getCategoryFace(): CategoryFacade
     {
         return $this->getProvidedDependency(

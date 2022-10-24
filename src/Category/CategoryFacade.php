@@ -11,19 +11,17 @@ use Gacela\Framework\AbstractFacade;
  */
 final class CategoryFacade extends AbstractFacade
 {
+    public function get(int $id): array
+    {
+        return $this->getFactory()
+            ->createCategory()
+            ->get($id);
+    }
 
-	public function get(int $id): array
-	{
-		return $this->getFactory()
-			->createCategory()
-			->get($id);
-	}
-
-	public function getTree(): array
-	{
-		return $this->getFactory()
-			->createCategory()
-			->getTree();
-	}
-
+    public function getTree(): array
+    {
+        return $this->getFactory()
+            ->createCategory()
+            ->getTree();
+    }
 }

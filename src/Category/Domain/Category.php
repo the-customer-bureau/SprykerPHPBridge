@@ -8,8 +8,8 @@ use Engineered\HttpClient\HttpClientFacadeInterface;
 
 class Category
 {
+    public const CATEGORY_TREES_ENDPOINT = 'category-trees';
     private const CATEGORY_NODES_ENDPOINT = 'category-nodes';
-	public const CATEGORY_TREES_ENDPOINT = 'category-trees';
 
     public function __construct(
         private HttpClientFacadeInterface $httpClient
@@ -21,7 +21,7 @@ class Category
         return $this->httpClient->get(self::CATEGORY_NODES_ENDPOINT . '/' . $id);
     }
 
-	public function getTree(): array
+    public function getTree(): array
     {
         return $this->httpClient->get(self::CATEGORY_TREES_ENDPOINT);
     }
