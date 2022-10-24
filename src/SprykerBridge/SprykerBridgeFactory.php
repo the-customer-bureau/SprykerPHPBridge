@@ -45,7 +45,7 @@ final class SprykerBridgeFactory extends AbstractFactory
         );
     }
 
-    public function getCategoryFace(): CategoryFacadeInterface
+    public function getCategoryFacade(): CategoryFacadeInterface
     {
         return $this->getProvidedDependency(
             SprykerBridgeDependencyProvider::FACADE_CATEGORY
