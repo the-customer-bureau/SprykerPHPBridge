@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Engineered\SprykerBridge;
 
-use Engineered\Auth\AuthFacade;
-use Engineered\Cart\CartFacade;
-use Engineered\Collections\CollectionsFacade;
-use Engineered\Customer\CustomerFacade;
-use Engineered\Resource\ResourceFacade;
+use Engineered\Auth\AuthFacadeInterface;
+use Engineered\Cart\CartFacadeInterface;
+use Engineered\Collections\CollectionsFacadeInterface;
+use Engineered\Customer\CustomerFacadeInterface;
+use Engineered\Resource\ResourceFacadeInterface;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -174,27 +174,27 @@ final class SprykerBridgeFacade extends AbstractFacade
      *
      */
 
-    public function resource(): ResourceFacade
+    public function resource(): ResourceFacadeInterface
     {
         return $this->getFactory()->getResourceFacade();
     }
 
-    public function collections(): CollectionsFacade
+    public function collections(): CollectionsFacadeInterface
     {
         return $this->getFactory()->getCollectionsFacade();
     }
 
-    public function customer(): CustomerFacade
+    public function customer(): CustomerFacadeInterface
     {
         return $this->getFactory()->getCustomerFacade();
     }
 
-    public function cart(): CartFacade
+    public function cart(): CartFacadeInterface
     {
         return $this->getFactory()->getCartFacade();
     }
 
-    public function auth(): AuthFacade
+    public function auth(): AuthFacadeInterface
     {
         return $this->getFactory()->getAuthFacade();
     }

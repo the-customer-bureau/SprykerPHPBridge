@@ -29,11 +29,30 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\": "tests/"
+      "EngineeredTests\\": "tests/"
     }
   },
   "scripts": {
+    "test-all": [
+      "@quality",
+      "@phpunit"
+    ],
+    "quality": [
+      "@csrun",
+      "@psalm",
+      "@phpstan"
+    ],
+    "phpunit": [
+      "@test-unit"
+    ],
+    "csrun": "./vendor/bin/php-cs-fixer fix --dry-run",
+    "psalm": "./vendor/bin/psalm",
+    "phpstan": "./vendor/bin/phpstan analyze",
     "csfix": "./vendor/bin/php-cs-fixer fix",
-    "csrun": "./vendor/bin/php-cs-fixer fix --dry-run"
+    "test-unit": "./vendor/bin/phpunit --testsuite=unit",
+    "static-clear-cache": [
+      "vendor/bin/psalm --clear-cache",
+      "vendor/bin/phpstan clear-result-cache"
+    ]
   }
 }

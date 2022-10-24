@@ -20,7 +20,7 @@ class Carts
     {
         $response = $this->httpClient->getProtected(self::CARTS_ENDPOINT, $bearerToken, $include);
 
-        if (!$returnAttribute) {
+        if ($returnAttribute === null) {
             return $response;
         }
         if ($returnAttribute === 'id') {

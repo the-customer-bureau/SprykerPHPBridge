@@ -6,8 +6,8 @@ namespace Engineered\Cart;
 
 use Engineered\Cart\Domain\Carts;
 use Engineered\Cart\Domain\GuestCartItems;
-use Engineered\HttpClient\HttpClientFacade;
 
+use Engineered\HttpClient\HttpClientFacadeInterface;
 use Gacela\Framework\AbstractFactory;
 
 /**
@@ -29,7 +29,7 @@ final class CartFactory extends AbstractFactory
         );
     }
 
-    private function getHttpClient(): HttpClientFacade
+    private function getHttpClient(): HttpClientFacadeInterface
     {
         return $this->getProvidedDependency(
             CartDependencyProvider::FACADE_HTTP_CLIENT

@@ -9,7 +9,7 @@ use Gacela\Framework\AbstractFacade;
 /**
  * @method CartFactory getFactory()
  */
-final class CartFacade extends AbstractFacade
+final class CartFacade extends AbstractFacade implements CartFacadeInterface
 {
     public function addToGuestCart(string $concreteSku, int $quantity, string $customerUniqueId, string $id = null, ?string $returnAttribute = null): array|string
     {
@@ -18,7 +18,7 @@ final class CartFacade extends AbstractFacade
             ->add($concreteSku, $quantity, $customerUniqueId, $id, $returnAttribute);
     }
 
-    public function getCustomerCarts(string $bearerToken, array $include = null, ?string $returnAttribute = null): array
+    public function getCustomerCarts(string $bearerToken, array $include = null, ?string $returnAttribute = null): array|string
     {
         return $this->getFactory()
             ->createCustomerCarts()

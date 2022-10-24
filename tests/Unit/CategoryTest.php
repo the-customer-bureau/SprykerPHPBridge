@@ -2,62 +2,33 @@
 
 declare(strict_types=1);
 
-namespace Unit;
+namespace EngineeredTests\Unit;
 
-use Engineered\HttpClient\HttpClientDependencyProvider;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 use Engineered\Resource\Domain\Category;
-use Engineered\SprykerBridge;
-
-use Gacela\Framework\ClassResolver\GlobalInstance\AnonymousGlobal;
 use PHPUnit\Framework\TestCase;
-
-use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Tests\Fakes\FakeHttpClientDependencyProvider;
 
 class CategoryTest extends TestCase
 {
-    private $mockHttpClient;
-    private $mockHttpClientFacade;
-    private $mockHttpResponse;
-
-    protected function setUp(): void
-    {
-        // set up
-        $this->mockHttpClient   = $this->createMock(HttpClientInterface::class);
-        //		$this->mockHttpResponse = $this->createMock(ResponseInterface::class);
-
-        $this->mockHttpClientFacade = $this->createMock(HttpClientFacadeInterface::class);
-
-        //		$this->mockHttpResponse->method('toArray')->willReturn($this->getReturn());
-
-        //		$this->mockHttpClient->method('request')->willReturn($this->mockHttpResponse);
-
-        $this->mockHttpClientFacade->method('get')->willReturn($this->getReturn());
-
-        AnonymousGlobal::overrideExistingResolvedClass(
-            HttpClientDependencyProvider::class,
-            new FakeHttpClientDependencyProvider($this->mockHttpClient)
-        );
-
-        SprykerBridge::create('');
-    }
-
     public function test_the_category_is_returned(): void
     {
-        $category = new Category($this->mockHttpClientFacade);
+        $httpClientFacade = $this->createMock(HttpClientFacadeInterface::class);
+        $httpClientFacade->method('get')->willReturn($this->httpClientResponse());
+        $category = new Category($httpClientFacade);
 
         $response = $category->get(4);
 
-        $this->assertEquals(4, $response['data']['id']);
-
-        $this->assertIsArray(
-            $response
-        );
+        self::assertEquals(4, $response['data']['id']);
+        $this->assertIsArray($response);
     }
 
-    private function getReturn(): array
+    private function httpClientResponse(): array
     {
-        return json_decode('{"data":{"type":"category-nodes","id":"4","attributes":{"nodeId":4,"name":"Camcorders","metaTitle":"Camcorders","metaKeywords":"Camcorders","metaDescription":"Camcorders","isActive":true,"order":90,"url":"\/en\/cameras-&-camcorders\/camcorders","children":[],"parents":[{"nodeId":2,"name":"Cameras & Camcorders","metaTitle":"Cameras & Camcorders","metaKeywords":"Cameras & Camcorders","metaDescription":"Cameras & Camcorders","isActive":true,"order":90,"url":"\/en\/cameras-&-camcorders","children":[],"parents":[{"nodeId":1,"name":"Demoshop","metaTitle":"Demoshop","metaKeywords":"English version of Demoshop","metaDescription":"English version of Demoshop","isActive":true,"order":null,"url":"\/en","children":[],"parents":[]}]}]},"links":{"self":"https:\/\/glue.de.b2c.demo-spryker.com\/category-nodes\/4?include="}}}', true);
+        return json_decode(
+            '{"data":{"type":"category-nodes","id":"4","attributes":{"nodeId":4,"name":"Camcorders","metaTitle":"Camcorders","metaKeywords":"Camcorders","metaDescription":"Camcorders","isActive":true,"order":90,"url":"\/en\/cameras-&-camcorders\/camcorders","children":[],"parents":[{"nodeId":2,"name":"Cameras & Camcorders","metaTitle":"Cameras & Camcorders","metaKeywords":"Cameras & Camcorders","metaDescription":"Cameras & Camcorders","isActive":true,"order":90,"url":"\/en\/cameras-&-camcorders","children":[],"parents":[{"nodeId":1,"name":"Demoshop","metaTitle":"Demoshop","metaKeywords":"English version of Demoshop","metaDescription":"English version of Demoshop","isActive":true,"order":null,"url":"\/en","children":[],"parents":[]}]}]},"links":{"self":"https:\/\/glue.de.b2c.demo-spryker.com\/category-nodes\/4?include="}}}',
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
     }
 }

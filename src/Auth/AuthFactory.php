@@ -6,7 +6,7 @@ namespace Engineered\Auth;
 
 use Engineered\Auth\Domain\AccessToken;
 use Engineered\Auth\Domain\RefreshToken;
-use Engineered\HttpClient\HttpClientFacade;
+use Engineered\HttpClient\HttpClientFacadeInterface;
 use Gacela\Framework\AbstractFactory;
 
 /**
@@ -24,7 +24,7 @@ final class AuthFactory extends AbstractFactory
         return new RefreshToken($this->getHttpClient());
     }
 
-    private function getHttpClient(): HttpClientFacade
+    private function getHttpClient(): HttpClientFacadeInterface
     {
         return $this->getProvidedDependency(
             AuthDependencyProvider::FACADE_HTTP_CLIENT

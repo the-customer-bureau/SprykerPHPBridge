@@ -9,7 +9,7 @@ use Gacela\Framework\AbstractFacade;
 /**
  * @method AuthFactory getFactory()
  */
-final class AuthFacade extends AbstractFacade
+final class AuthFacade extends AbstractFacade implements AuthFacadeInterface
 {
     public function getAccessToken(string $username, string $password, ?string $returnAttribute = null): array|string
     {
