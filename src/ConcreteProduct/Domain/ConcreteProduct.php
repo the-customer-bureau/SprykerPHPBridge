@@ -6,7 +6,7 @@ namespace Engineered\ConcreteProduct\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
-class ConcreteProduct
+final class ConcreteProduct
 {
     private const CONCRETE_PRODUCTS_ENDPOINT = 'concrete-products';
 

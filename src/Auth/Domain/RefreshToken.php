@@ -6,7 +6,7 @@ namespace Engineered\Auth\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
-class RefreshToken
+final class RefreshToken
 {
     public const REFRESH_TOKEN_ENDPOINT = 'refresh-tokens';
 

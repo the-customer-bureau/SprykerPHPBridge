@@ -6,7 +6,7 @@ namespace Engineered\Auth\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
-class AccessToken
+final class AccessToken
 {
     public const ACCESS_TOKEN_ENDPOINT = 'access-tokens';
 

@@ -6,7 +6,7 @@ namespace Engineered\Category\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
-class Category
+final class Category
 {
     public const CATEGORY_TREES_ENDPOINT = 'category-trees';
     private const CATEGORY_NODES_ENDPOINT = 'category-nodes';

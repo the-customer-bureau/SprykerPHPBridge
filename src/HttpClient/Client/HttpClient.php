@@ -6,7 +6,7 @@ namespace Engineered\HttpClient\Client;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class HttpClient
+final class HttpClient
 {
     public function __construct(
         private HttpClientInterface $client,

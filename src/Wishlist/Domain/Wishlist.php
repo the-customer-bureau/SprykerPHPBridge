@@ -6,7 +6,7 @@ namespace Engineered\Wishlist\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
-class Wishlist
+final class Wishlist
 {
     public const WISHLISTS_ENDPOINT = 'wishlists';
     public const WISHLIST_ITEMS_ENDPOINT = 'wishlist-items';

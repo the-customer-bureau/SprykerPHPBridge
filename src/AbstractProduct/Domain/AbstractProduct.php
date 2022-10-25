@@ -6,7 +6,7 @@ namespace Engineered\AbstractProduct\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
 
-class AbstractProduct
+final class AbstractProduct
 {
     public const ABSTRACT_PRODUCT_SEARCH_ENDPOINT = 'catalog-search?q=';
     private const ABSTRACT_PRODUCTS_ENDPOINT = 'abstract-products';

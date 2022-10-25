@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace Engineered\Customer;
 
+/**
+ * @method CustomerFactory getFactory()
+ */
 interface CustomerFacadeInterface
 {
-    public function getWishLists(string $bearerToken): array;
-
-    public function getWishList(string $wishlistId, string $bearerToken): array;
-
-    public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null): array|string;
-
-    public function addToWishlist(string $wishlistId, string $sku, string $bearerToken): array;
+    public function get(string $bearerToken): array;
 }

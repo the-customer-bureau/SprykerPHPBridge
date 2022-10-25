@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\Customer;
 
-use Engineered\Customer\Domain\Wishlists;
+use Engineered\Customer\Domain\Customer;
 use Engineered\HttpClient\HttpClientFacadeInterface;
 use Gacela\Framework\AbstractFactory;
 
@@ -13,9 +13,9 @@ use Gacela\Framework\AbstractFactory;
  */
 final class CustomerFactory extends AbstractFactory
 {
-    public function createWishlists(): Wishlists
+    public function createCustomer(): Customer
     {
-        return new Wishlists($this->getHttpClient());
+        return new Customer($this->getHttpClient());
     }
 
     private function getHttpClient(): HttpClientFacadeInterface

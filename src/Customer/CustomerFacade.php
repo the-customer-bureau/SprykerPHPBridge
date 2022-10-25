@@ -11,31 +11,10 @@ use Gacela\Framework\AbstractFacade;
  */
 final class CustomerFacade extends AbstractFacade implements CustomerFacadeInterface
 {
-    public function getWishLists(string $bearerToken): array
+    public function get(string $bearerToken): array
     {
         return $this->getFactory()
-            ->createWishlists()
-            ->getList($bearerToken);
-    }
-
-    public function getWishList(string $wishlistId, string $bearerToken): array
-    {
-        return $this->getFactory()
-            ->createWishlists()
-            ->get($wishlistId, $bearerToken);
-    }
-
-    public function createWishlist(string $name, string $bearerToken, ?string $returnAttribute = null): array|string
-    {
-        return $this->getFactory()
-            ->createWishlists()
-            ->create($name, $bearerToken, $returnAttribute);
-    }
-
-    public function addToWishlist(string $wishlistId, string $sku, string $bearerToken): array
-    {
-        return $this->getFactory()
-            ->createWishlists()
-            ->add($wishlistId, $sku, $bearerToken);
+            ->createCustomer()
+            ->get($bearerToken);
     }
 }
