@@ -19,4 +19,18 @@ final class Customer
     {
         return $this->httpClient->getProtected(self::CUSTOMERS_ENDPOINT, $bearerToken);
     }
+
+    public function getId(string $bearerToken): string
+    {
+        $response = $this->get($bearerToken);
+
+        return $response['data'][0]['id'];
+    }
+
+    public function getAttributes(string $bearerToken): array
+    {
+        $response = $this->get($bearerToken);
+
+        return $response['data'][0]['attributes'];
+    }
 }

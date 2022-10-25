@@ -17,4 +17,18 @@ final class CustomerFacade extends AbstractFacade implements CustomerFacadeInter
             ->createCustomer()
             ->get($bearerToken);
     }
+
+    public function getId(string $bearerToken): string
+    {
+        return $this->getFactory()
+            ->createCustomer()
+            ->getId($bearerToken);
+    }
+
+    public function getAttributes(string $bearerToken): array
+    {
+        return $this->getFactory()
+            ->createCustomer()
+            ->getAttributes($bearerToken);
+    }
 }
