@@ -48,21 +48,19 @@ $sprykerBridge->abstractProduct()->search('NEX-VG20EH');
 // getting more advanced:
 
 // Login and return the Bearer Token for protected requests.
-$bearerToken = $sprykerBridge->getAccessToken('sonia@spryker.com', 'change123', TokenReturnAttribute::accessToken);
+$bearerToken = $sprykerBridge->auth()->getAccessToken('sonia@spryker.com', 'change123');
 
 // with your bearer token, you can now do things like, create a wishlist...
 $name = uniqid('my wishlist');
 
-$wishList = $sprykerBridge->createWishlist($name, $bearerToken);
+$newWishList = $sprykerBridge->wishlist()->create($name, $token);
 
-// ... and the API allows you to specify what gets returned by using the supplied Enums.
-// This code will return the ID directly as a string, rather than the entire response.
-$name = uniqid('my wishlist');
+// now we can add a concrete product to the wishlist
+$addToWishlist = $sprykerBridge->wishlist()->add($newWishList['data']['id'], '209_12554247', $token);
 
-$wishListId = $sprykerBridge->createWishlist($name, $bearerToken, WishlistsAttribute::id);
+// and then retrieve the wishlist
+$wishList = $sprykerBridge->wishlist()->get($newWishList['data']['id'], $token);
 
-// we can easily add to the wishlist:
-$sprykerBridge->addToWishlist($wishListId, '209_12554247', $bearerToken);
 
 
 // we can even add to cart! (checkout coming next!)
