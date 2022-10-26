@@ -11,6 +11,7 @@ use Engineered\Category\CategoryFacadeInterface;
 use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 
+use Engineered\Orders\OrdersFacadeInterface;
 use Engineered\Wishlist\WishlistFacadeInterface;
 use Gacela\Framework\AbstractFactory;
 
@@ -65,6 +66,13 @@ final class SprykerBridgeFactory extends AbstractFactory
     {
         return $this->getProvidedDependency(
             SprykerBridgeDependencyProvider::FACADE_WISHLIST
+        );
+    }
+
+    public function getOrdersFacade(): OrdersFacadeInterface
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_ORDERS
         );
     }
 }

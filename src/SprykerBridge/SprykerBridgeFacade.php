@@ -10,8 +10,9 @@ use Engineered\Cart\CartFacadeInterface;
 use Engineered\Category\CategoryFacadeInterface;
 use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
-
+use Engineered\Orders\OrdersFacadeInterface;
 use Engineered\Wishlist\WishlistFacadeInterface;
+
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -52,5 +53,10 @@ final class SprykerBridgeFacade extends AbstractFacade
     public function wishlist(): WishListFacadeInterface
     {
         return $this->getFactory()->getWishListFacade();
+    }
+
+    public function orders(): OrdersFacadeInterface
+    {
+        return $this->getFactory()->getOrdersFacade();
     }
 }

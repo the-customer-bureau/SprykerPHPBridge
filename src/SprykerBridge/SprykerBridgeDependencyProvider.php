@@ -10,8 +10,9 @@ use Engineered\Cart\CartFacade;
 use Engineered\Category\CategoryFacade;
 use Engineered\ConcreteProduct\ConcreteProductFacade;
 use Engineered\Customer\CustomerFacade;
-
+use Engineered\Orders\OrdersFacade;
 use Engineered\Wishlist\WishlistFacade;
+
 use Gacela\Framework\AbstractDependencyProvider;
 use Gacela\Framework\Container\Container;
 
@@ -24,6 +25,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     public const FACADE_CONCRETE_PRODUCT = 'FACADE_CONCRETE_PRODUCT';
     public const FACADE_CATEGORY = 'FACADE_CATEGORY';
     public const FACADE_WISHLIST = 'FACADE_WISHLIST';
+    public const FACADE_ORDERS = 'FACADE_ORDERS';
 
     public function provideModuleDependencies(Container $container): void
     {
@@ -34,6 +36,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
         $this->addConcreteProductFacade($container);
         $this->addCategoryFacade($container);
         $this->addWishlistFacade($container);
+        $this->addOrdersFacade($container);
     }
 
     private function addAuthFacade(Container $container): void
@@ -102,6 +105,16 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
             self::FACADE_WISHLIST,
             static function (Container $container) {
                 return $container->getLocator()->get(WishlistFacade::class);
+            }
+        );
+    }
+
+    private function addOrdersFacade(Container $container): void
+    {
+        $container->set(
+            self::FACADE_ORDERS,
+            static function (Container $container) {
+                return $container->getLocator()->get(OrdersFacade::class);
             }
         );
     }
