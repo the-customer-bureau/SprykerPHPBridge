@@ -7,4 +7,3 @@ composer.phar
 composer.lock
 Dockerfile
 docker-compose.yml
-docker-compose.yml
