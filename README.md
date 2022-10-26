@@ -32,10 +32,10 @@ $sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 
 
 // grab the category trees:
-$categoryTress = $sprykerBridge->category->getTrees();
+$categoryTress = $sprykerBridge->category()->getTrees();
 
 // grab a single category
-$category = $sprykerBridge->category->get(4);
+$category = $sprykerBridge->category()->get(4);
 
 // grab products
 $abstractProduct = $sprykerBridge->abstractProduct()->get(202);

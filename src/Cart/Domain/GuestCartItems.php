@@ -15,29 +15,9 @@ class GuestCartItems
     ) {
     }
 
-    public function add(
-        string $concreteSku,
-        int $quantity,
-        string $customerUniqueId,
-        string $id = null,
-        ?string $returnAttribute = null
-    ): array|string {
-        $response = $this->httpClient->post(self::GUEST_CART_ITEMS_ENDPOINT, $this->getPayload($concreteSku, $quantity), $this->getHeaders($customerUniqueId));
-
-        if (!$returnAttribute) {
-            return $response;
-        }
-        if ($returnAttribute === 'id') {
-            return $response['data']['id'];
-        }
-
-        if (str_contains($returnAttribute, '_')) {
-            $returnAttributeArray = explode('_', $returnAttribute);
-
-            return $response['data']['attributes'][$returnAttributeArray[0]][$returnAttributeArray[1]];
-        }
-
-        return $response['data']['attributes'][$returnAttribute];
+    public function add(string $concreteSku, int $quantity, string $customerUniqueId): array
+    {
+        return $this->httpClient->post(self::GUEST_CART_ITEMS_ENDPOINT, $this->getPayload($concreteSku, $quantity), $this->getHeaders($customerUniqueId));
     }
 
     private function getPayload(string $concreteSku, int $quantity = 1): array

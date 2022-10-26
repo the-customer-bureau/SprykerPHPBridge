@@ -6,19 +6,9 @@ namespace Engineered\Cart;
 
 interface CartFacadeInterface
 {
-    public function addToGuestCart(
-        string $concreteSku,
-        int $quantity,
-        string $customerUniqueId,
-        string $id = null,
-        ?string $returnAttribute = null
-    ): array|string;
+    public function addToGuestCart(string $concreteSku, int $quantity, string $customerUniqueId): array;
 
-    public function getCustomerCarts(
-        string $bearerToken,
-        array $include = null,
-        ?string $returnAttribute = null
-    ): array|string;
+    public function getCustomerCarts(string $customerId, string $bearerToken, array $include = null): array;
 
-    public function addToCustomerCart(string $concreteSku, int $quantity, string $cartId, string $bearerToken): array;
+    public function addToCustomerCart(string $concreteSku, int $quantity, string $bearerToken, string $cartId = null): array;
 }

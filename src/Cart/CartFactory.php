@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\Cart;
 
-use Engineered\Cart\Domain\Carts;
+use Engineered\Cart\Domain\CustomerCarts;
 use Engineered\Cart\Domain\GuestCartItems;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
@@ -22,10 +22,12 @@ final class CartFactory extends AbstractFactory
         );
     }
 
-    public function createCustomerCarts(): Carts
+    public function createCustomerCarts(): CustomerCarts
     {
-        return new Carts(
-            $this->getHttpClient()
+        return new CustomerCarts(
+            $this->getHttpClient(),
+            $this->getConfig()->getCurrency(),
+            $this->getConfig()->getStore()
         );
     }
 
