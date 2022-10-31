@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\ConcreteProduct;
 
-/**
- * @method ConcreteProductFactory getFactory()
- */
 interface ConcreteProductFacadeInterface
 {
     public function get(string $sku): array;

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\AbstractProduct;
 
-/**
- * @method AbstractProductFactory getFactory()
- */
 interface AbstractProductFacadeInterface
 {
     public function get(string $sku): array;
