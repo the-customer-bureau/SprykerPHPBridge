@@ -11,10 +11,8 @@ use Gacela\Framework\AbstractFacade;
  */
 final class ShippingFacade extends AbstractFacade
 {
-
-	public function create(array $items, array $address, int $shippingMethodId): array
-	{
-		return $this->getFactory()->createShipping()->create($items, $address, $shippingMethodId);
-	}
-
+    public function create(array $items, array $address, int $shippingMethodId): array
+    {
+        return $this->getFactory()->createShipping()->create($items, $address, $shippingMethodId);
+    }
 }

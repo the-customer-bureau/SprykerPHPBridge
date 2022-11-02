@@ -1,27 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Engineered\Shipping\Domain;
 
 class Shipping
 {
+    public function __construct()
+    {
+    }
 
+    public function create(array $items, array $address, int $shippingMethodId): array
+    {
+        $payload = [];
 
-	public function __construct()
-	{
-	}
+        $payload['items']            = $items;
+        $payload['shippingAddress']  = $address;
+        $payload['idShipmentMethod'] = $shippingMethodId;
 
-
-	public function create(array $items, array $address, int $shippingMethodId): array
-	{
-
-		$payload = [];
-
-		$payload['items']            = $items;
-		$payload['shippingAddress']  = $address;
-		$payload['idShipmentMethod'] = $shippingMethodId;
-
-		return $payload;
-
-	}
-
+        return $payload;
+    }
 }

@@ -12,9 +12,8 @@ use Gacela\Framework\AbstractFactory;
  */
 final class ShippingFactory extends AbstractFactory
 {
-
-	public function createShipping(): Shipping
-	{
-		return new Shipping();
-	}
+    public function createShipping(): Shipping
+    {
+        return new Shipping();
+    }
 }
