@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Engineered\Wishlist;
 
-/**
- * @method WishlistFactory getFactory()
- */
 interface WishlistFacadeInterface
 {
     public function create(string $name, string $bearerToken): array;
