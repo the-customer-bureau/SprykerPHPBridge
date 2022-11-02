@@ -19,7 +19,7 @@ final class AbstractProduct
 
     public function search(string $searchTerm): array
     {
-        return $this->httpClient->get(self::ABSTRACT_PRODUCT_SEARCH_ENDPOINT . $searchTerm);
+        return $this->httpClient->get(self::ABSTRACT_PRODUCT_SEARCH_ENDPOINT . $searchTerm . '&include=abstract-products,concrete-products');
     }
 
     public function get(string $sku): array
