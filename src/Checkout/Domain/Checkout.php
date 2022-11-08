@@ -2,15 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Engineered\Cart\Domain;
-
-use Engineered\HttpClient\HttpClientFacadeInterface;
+namespace Engineered\Checkout\Domain;
 
 class Checkout
 {
-    public function __construct(HttpClientFacadeInterface $httpClient)
-    {
-    }
-
-	
 }
