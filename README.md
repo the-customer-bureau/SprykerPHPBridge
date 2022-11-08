@@ -68,3 +68,20 @@ $wishList = $sprykerBridge->wishlist()->get($newWishList['data']['id'], $token);
 $sprykerBridge->addToGuestCart('209_12554247', $uid, 4, null, GuestCartReturnAttribute::totals_discountTotal);
 
 ```
+
+## Git Hooks
+
+You can verify all your commits will pass the CI (coding guidelines, static analyzers, and tests) by enabling the git
+pre-commit hook that will trigger all of them before creating a new commit. Don't worry, it usually takes a couple of
+seconds.
+
+You can add the git hook running the following bash script:
+
+```bash
+$ ./tools/git-hooks/init.sh
+```
+
+You can always use the `--no-verify` to bypass the git hook:
+> git commit -m 'your message' --no-verify
+
+But I like to use them by default to catch potential easy-to-check mistakes.
