@@ -11,4 +11,6 @@ interface CustomerFacadeInterface
     public function getId(string $bearerToken): string;
 
     public function getAttributes(string $bearerToken): array;
+
+    public function generateCustomerUniqueId(): string;
 }

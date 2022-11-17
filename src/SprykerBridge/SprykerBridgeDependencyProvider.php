@@ -8,6 +8,7 @@ use Engineered\AbstractProduct\AbstractProductFacade;
 use Engineered\Auth\AuthFacade;
 use Engineered\Cart\CartFacade;
 use Engineered\Category\CategoryFacade;
+use Engineered\Checkout\CheckoutFacade;
 use Engineered\ConcreteProduct\ConcreteProductFacade;
 use Engineered\Customer\CustomerFacade;
 use Engineered\Orders\OrdersFacade;
@@ -26,6 +27,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     public const FACADE_CATEGORY = 'FACADE_CATEGORY';
     public const FACADE_WISHLIST = 'FACADE_WISHLIST';
     public const FACADE_ORDERS = 'FACADE_ORDERS';
+    public const FACADE_CHECKOUT = 'FACADE_CHECKOUT';
 
     public function provideModuleDependencies(Container $container): void
     {
@@ -37,6 +39,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
         $this->addCategoryFacade($container);
         $this->addWishlistFacade($container);
         $this->addOrdersFacade($container);
+        $this->addCheckoutFacade($container);
     }
 
     private function addAuthFacade(Container $container): void
@@ -115,6 +118,15 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
             self::FACADE_ORDERS,
             static function (Container $container) {
                 return $container->getLocator()->get(OrdersFacade::class);
+            }
+        );
+    }
+    private function addCheckoutFacade(Container $container): void
+    {
+        $container->set(
+            self::FACADE_CHECKOUT,
+            static function (Container $container) {
+                return $container->getLocator()->get(CheckoutFacade::class);
             }
         );
     }

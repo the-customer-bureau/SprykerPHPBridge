@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Engineered\Customer\Domain;
 
 use Engineered\HttpClient\HttpClientFacadeInterface;
+use Exception;
 
 final class Customer
 {
@@ -32,5 +33,15 @@ final class Customer
         $response = $this->get($bearerToken);
 
         return $response['data'][0]['attributes'];
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function generateCustomerUniqueId(): string
+    {
+        $bytes = random_bytes(15);
+
+        return uniqid(bin2hex($bytes), true);
     }
 }

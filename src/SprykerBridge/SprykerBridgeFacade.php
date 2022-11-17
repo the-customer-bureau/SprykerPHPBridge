@@ -8,6 +8,7 @@ use Engineered\AbstractProduct\AbstractProductFacadeInterface;
 use Engineered\Auth\AuthFacadeInterface;
 use Engineered\Cart\CartFacadeInterface;
 use Engineered\Category\CategoryFacadeInterface;
+use Engineered\Checkout\CheckoutFacadeInterface;
 use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 use Engineered\Orders\OrdersFacadeInterface;
@@ -58,5 +59,9 @@ final class SprykerBridgeFacade extends AbstractFacade
     public function orders(): OrdersFacadeInterface
     {
         return $this->getFactory()->getOrdersFacade();
+    }
+    public function checkout(): CheckoutFacadeInterface
+    {
+        return $this->getFactory()->getCheckoutFacade();
     }
 }

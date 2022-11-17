@@ -8,6 +8,7 @@ use Engineered\AbstractProduct\AbstractProductFacadeInterface;
 use Engineered\Auth\AuthFacadeInterface;
 use Engineered\Cart\CartFacadeInterface;
 use Engineered\Category\CategoryFacadeInterface;
+use Engineered\Checkout\CheckoutFacadeInterface;
 use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 
@@ -73,6 +74,12 @@ final class SprykerBridgeFactory extends AbstractFactory
     {
         return $this->getProvidedDependency(
             SprykerBridgeDependencyProvider::FACADE_ORDERS
+        );
+    }
+    public function getCheckoutFacade(): CheckoutFacadeInterface
+    {
+        return $this->getProvidedDependency(
+            SprykerBridgeDependencyProvider::FACADE_CHECKOUT
         );
     }
 }

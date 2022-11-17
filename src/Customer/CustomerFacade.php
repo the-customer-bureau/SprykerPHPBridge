@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Engineered\Customer;
 
+use Exception;
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -30,5 +31,15 @@ final class CustomerFacade extends AbstractFacade implements CustomerFacadeInter
         return $this->getFactory()
             ->createCustomer()
             ->getAttributes($bearerToken);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function generateCustomerUniqueId(): string
+    {
+        return $this->getFactory()
+            ->createCustomer()
+            ->generateCustomerUniqueId();
     }
 }
