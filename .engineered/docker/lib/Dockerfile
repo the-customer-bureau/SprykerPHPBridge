@@ -17,7 +17,6 @@ RUN apk add --no-cache \
     php8-openssl \
     php8-dom \
     php8-xml \
-    php8-soap \
     php8-session \
     php8-xmlwriter \
     php8-sockets \
@@ -31,11 +30,7 @@ RUN apk add --no-cache \
     php8-curl \
     php8-ctype \
     php8-pcntl \
-    php8-posix \
-    php8-pdo \
-    php8-pdo_mysql \
-    php8-pdo_sqlite \
-    php8-pdo_pgsql
+    php8-posix
 
 # Add wget to make requests
 RUN apk add --no-cache wget
