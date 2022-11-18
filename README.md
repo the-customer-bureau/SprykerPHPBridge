@@ -62,11 +62,22 @@ $addToWishlist = $sprykerBridge->wishlist()->add($newWishList['data']['id'], '20
 $wishList = $sprykerBridge->wishlist()->get($newWishList['data']['id'], $token);
 
 
+// an easy way to generate an X-Anonymous-Customer-Unique-Id
+$uniqueId = $sprykerBridge->customer()->generateCustomerUniqueId();
 
-// we can even add to cart! (checkout coming next!)
+// we can even add to cart!
+$addToCartResponse = $sprykerBridge->cart()->addToGuestCart('038_25905593', 1, $uniqueId);
 
-$sprykerBridge->addToGuestCart('209_12554247', $uid, 4, null, GuestCartReturnAttribute::totals_discountTotal);
 
+// how about checkout?
+
+// we've given you a handy post data builder...
+// send in your customer, address, billing and shipment data as arrays,
+// and the bridge will give you nicely formatted POST data ready to send to Spryker for checkout.
+$postData = $sprykerBridge->checkout()->buildCheckoutPostData($addToCartResponse['data']['id'], $customer, $billingAddress, $payments, $shipments);
+
+// checking out is as easy as one line of code:
+$checkout = $sprykerBridge->checkout()->guestCheckout($uniqueId, $postData);
 ```
 
 ## Git Hooks
