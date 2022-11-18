@@ -5,7 +5,7 @@
   "license": "proprietary",
   "authors": [
     {
-      "name": "ray.lawlor",
+      "name": "Ray Lawlor",
       "email": "ray.lawlor@veriteer.com"
     }
   ],
@@ -21,6 +21,11 @@
     "friendsofphp/php-cs-fixer": "^3.13",
     "phpstan/phpstan": "^1.8",
     "vimeo/psalm": "^4.29"
+  },
+  "config": {
+    "platform": {
+      "php": "8.0.25"
+    }
   },
   "autoload": {
     "psr-4": {
