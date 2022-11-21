@@ -2,4 +2,4 @@
 
 set -e
 
-composer test-all
+make pr

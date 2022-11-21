@@ -79,7 +79,7 @@ $postData = $sprykerBridge->checkout()->buildCheckoutPostData($addToCartResponse
 $checkout = $sprykerBridge->checkout()->guestCheckout($uniqueId, $postData);
 ```
 
-## Development
+## Development with Docker (Optional)
 
 Just by having docker installed and running `make` on the root of the project, you'll have 
 everything you need for development. Every developer will have the same PHP and Composer versions.

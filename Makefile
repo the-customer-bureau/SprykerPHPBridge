@@ -17,7 +17,7 @@ dependencies:
 
 # Configures the git hooks
 hooks:
-	$(META_FOLDER)/git-hooks/init.sh
+	$(META_FOLDER)/git-hooks/init.sh make
 
 # Boots all the services in the docker-compose stack
 boot:
