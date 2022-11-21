@@ -1,5 +1,6 @@
 # SprykerPHPBridge
 ## A PHP wrapper for the Spryker Glue API.
+
 > Written in PHP using [Gacela](https://github.com/gacela-project/gacela)
 
 ### Q. So what does this do and why is it useful?
@@ -16,8 +17,6 @@ A. Well we know...! But this package allows you to use Spryker data in any PHP A
 ```bash
 composer require engineered/sprykerphpbridge
 ```
-
-
 
 ### Example
 
@@ -80,19 +79,65 @@ $postData = $sprykerBridge->checkout()->buildCheckoutPostData($addToCartResponse
 $checkout = $sprykerBridge->checkout()->guestCheckout($uniqueId, $postData);
 ```
 
-## Git Hooks
+## Development with Docker (Optional)
 
-You can verify all your commits will pass the CI (coding guidelines, static analyzers, and tests) by enabling the git
-pre-commit hook that will trigger all of them before creating a new commit. Don't worry, it usually takes a couple of
-seconds.
+Just by having docker installed and running `make` on the root of the project, you'll have 
+everything you need for development. Every developer will have the same PHP and Composer versions.
 
-You can add the git hook running the following bash script:
+This command does the following:
+- Builds the required docker images with the required binaries for development (php, composer 
+  and other stuff)
+- Installs dependencies with composer
+- Setups the git hooks
+- Boots the development stack
+
+By default, the PHP container executes a dummy long-running process, so the container is always up 
+and running. You can configure a remote interpreter in PHPStorm that points to that running
+container to run test suites and get code analysis.
+
+When you are done working, `make stop` is your best friend.
+
+You can still use your own PHP version, but then you risk your changes to be rejected due to
+incompatibility or having issues installing / upgrading dependencies.
+
+### Running Commands
+
+There are predefines commands on the Makefile to run the most common tasks.
+
+You can run `make pr` to get feedback on the overall quality of your code. You can also run 
+`make statica` to run the static analysis, `make fmt` to format the code according to the PHP CS 
+Fixer standards defined in the project, or `make test` to run the test suite. All these run on
+the docker stack, so make sure your services are up and running with `make boot`.
+
+If you want to install a package or run a specific command, is best to do so through the docker 
+stack. So a composer install would look like this:
 
 ```bash
-$ ./tools/git-hooks/init.sh
+docker-compose exec lib composer install
 ```
 
-You can always use the `--no-verify` to bypass the git hook:
+This is quite long to type, so there are two alternatives:
+
+First, you can create an alias for `docker-compose`, like `dc`
+
+```bash
+dc exec lib composer install
+```
+
+Another option is to run `make shell` and open a shell directly into the container. Then you can
+run the commands as if you were in your machine:
+
+```ash
+composer install
+```
+
+### Git Hooks
+
+The git hooks validate that your code is good to merge. By default, a pre-commit hook is installed
+that runs `make pr` every time you commit.
+
+You can always use the `--no-verify` flag to bypass the git hook:
+
 > git commit -m 'your message' --no-verify
 
 But I like to use them by default to catch potential easy-to-check mistakes.

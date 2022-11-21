@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+
+  lib:
+    image: engineered/sprykerphpbridge:8.0-dev
+    build:
+      context: .engineered/docker
+      dockerfile: ./lib/Dockerfile
+      target: dev
+    container_name: engineered.sprykerphpbridge.dev
+    working_dir: /php/lib
+    volumes:
+      - .:/php/lib
+    user: ${UID:-1000}
