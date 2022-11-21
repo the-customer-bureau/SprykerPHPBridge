@@ -2,7 +2,8 @@
   "name": "engineered/sprykerphpbridge",
   "description": "A PHP wrapper for the Spryker Glue API",
   "minimum-stability": "stable",
-  "license": "proprietary",
+  "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "ray.lawlor",
