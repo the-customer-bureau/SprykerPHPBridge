@@ -11,7 +11,7 @@ $sprykerBridge = SprykerBridge::create('https://glue.de.b2c.demo-spryker.com');
 $categoryTress = $sprykerBridge->category()->getTrees();
 
 // grab a single category
-$category = $sprykerBridge->category()->get(4);
+$category = $sprykerBridge->category()->get(3);
 
 // grab products
 $abstractProduct = $sprykerBridge->abstractProduct()->get(202);
