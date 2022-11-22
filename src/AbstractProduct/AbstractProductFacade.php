@@ -66,4 +66,11 @@ final class AbstractProductFacade extends AbstractFacade implements AbstractProd
             ->createAbstractProduct()
             ->getMetaDescription($sku);
     }
+
+    public function getRelated(string $sku): array
+    {
+        return $this->getFactory()
+            ->createAbstractProduct()
+            ->getRelated($sku);
+    }
 }

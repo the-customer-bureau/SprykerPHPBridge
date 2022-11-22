@@ -20,6 +20,8 @@ composer require engineered/sprykerphpbridge
 
 ### Example
 
+For a full example [see here](example/full_example.php).
+
 ```php
 
 <?php
@@ -29,55 +31,42 @@ require __DIR__ . '/vendor/autoload.php';
 // Change YOUR_GLUE_URL to something like: 'https://glue.de.b2c.demo-spryker.com'
 $sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 
+// get the category trees
 
-// grab the category trees:
 $categoryTress = $sprykerBridge->category()->getTrees();
 
-// grab a single category
-$category = $sprykerBridge->category()->get(4);
-
-// grab products
-$abstractProduct = $sprykerBridge->abstractProduct()->get(202);
-$concreteProduct = $sprykerBridge->concreteProduct()->get("209_12554247");
-$relatedProducts = $sprykerBridge->abstractProduct()->getRelated(202);
-
-// even search products
-$sprykerBridge->abstractProduct()->search('NEX-VG20EH');
-
-// getting more advanced:
-
-// Login and return the Bearer Token for protected requests.
-$bearerToken = $sprykerBridge->auth()->getAccessToken('sonia@spryker.com', 'change123');
-
-// with your bearer token, you can now do things like, create a wishlist...
-$name = uniqid('my wishlist');
-
-$newWishList = $sprykerBridge->wishlist()->create($name, $token);
-
-// now we can add a concrete product to the wishlist
-$addToWishlist = $sprykerBridge->wishlist()->add($newWishList['data']['id'], '209_12554247', $token);
-
-// and then retrieve the wishlist
-$wishList = $sprykerBridge->wishlist()->get($newWishList['data']['id'], $token);
-
-
-// an easy way to generate an X-Anonymous-Customer-Unique-Id
-$uniqueId = $sprykerBridge->customer()->generateCustomerUniqueId();
-
-// we can even add to cart!
-$addToCartResponse = $sprykerBridge->cart()->addToGuestCart('038_25905593', 1, $uniqueId);
-
-
-// how about checkout?
-
-// we've given you a handy post data builder...
-// send in your customer, address, billing and shipment data as arrays,
-// and the bridge will give you nicely formatted POST data ready to send to Spryker for checkout.
-$postData = $sprykerBridge->checkout()->buildCheckoutPostData($addToCartResponse['data']['id'], $customer, $billingAddress, $payments, $shipments);
-
-// checking out is as easy as one line of code:
-$checkout = $sprykerBridge->checkout()->guestCheckout($uniqueId, $postData);
 ```
+```json
+//outputs
+
+{
+    "data": [
+        {
+            "type": "category-trees",
+            "id": null,
+            "attributes": {
+                "categoryNodesStorage": [
+                    {
+                        "nodeId": 5,
+                        "order": 100,
+                        "name": "Computers",
+                        "url": "/en/computers",
+                        ... (etc) ...
+                    },
+                  
+                ]
+            },
+            "links": {
+                "self": "https://glue.de.b2c.demo-spryker.com/category-trees"
+            }
+        }
+    ],
+    "links": {
+        "self": "https://glue.de.b2c.demo-spryker.com/category-trees"
+    }
+}
+
+ ```
 
 ## Development with Docker (Optional)
 

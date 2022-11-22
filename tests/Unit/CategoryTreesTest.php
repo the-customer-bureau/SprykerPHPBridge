@@ -17,7 +17,7 @@ class CategoryTreesTest extends TestCase
         $httpClientFacade->method('get')->willReturn($this->httpClientResponse());
         $category = new Category($httpClientFacade);
 
-        $response = $category->getTree();
+        $response = $category->getTrees();
 
         self::assertEquals(5, $response['data'][0]['attributes']['categoryNodesStorage'][0]['nodeId']);
         $this->assertIsArray($response);

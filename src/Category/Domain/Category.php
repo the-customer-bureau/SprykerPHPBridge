@@ -21,7 +21,7 @@ final class Category
         return $this->httpClient->get(self::CATEGORY_NODES_ENDPOINT . '/' . $id);
     }
 
-    public function getTree(): array
+    public function getTrees(): array
     {
         return $this->httpClient->get(self::CATEGORY_TREES_ENDPOINT);
     }

@@ -19,4 +19,6 @@ interface AbstractProductFacadeInterface
     public function getMetaKeywords(string $sku): string;
 
     public function getMetaDescription(string $sku): string;
+
+    public function getRelated(string $sku): array;
 }

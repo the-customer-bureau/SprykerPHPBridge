@@ -18,10 +18,10 @@ final class CategoryFacade extends AbstractFacade implements CategoryFacadeInter
             ->get($id);
     }
 
-    public function getTree(): array
+    public function getTrees(): array
     {
         return $this->getFactory()
             ->createCategory()
-            ->getTree();
+            ->getTrees();
     }
 }

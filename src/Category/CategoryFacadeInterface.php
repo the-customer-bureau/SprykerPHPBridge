@@ -8,5 +8,5 @@ interface CategoryFacadeInterface
 {
     public function get(int $id): array;
 
-    public function getTree(): array;
+    public function getTrees(): array;
 }
