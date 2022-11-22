@@ -4,7 +4,7 @@ require '../vendor/autoload.php';
 
 use Engineered\SprykerBridge;
 
-
+// here we are using the live Spryker demo for convenience
 $sprykerBridge = SprykerBridge::create('https://glue.de.b2c.demo-spryker.com');
 
 // grab the category trees:
