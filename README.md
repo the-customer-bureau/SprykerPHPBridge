@@ -130,3 +130,9 @@ You can always use the `--no-verify` flag to bypass the git hook:
 > git commit -m 'your message' --no-verify
 
 But I like to use them by default to catch potential easy-to-check mistakes.
+
+### Contribute
+
+You are more than welcome to contribute by reporting
+[issues](https://github.com/the-customer-bureau/SprykerPHPBridge/issues),
+or [contributing](.github/CONTRIBUTING.md) with your Pull Requests.
