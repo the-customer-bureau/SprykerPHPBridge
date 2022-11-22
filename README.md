@@ -36,7 +36,7 @@ $sprykerBridge = SprykerBridge::create(YOUR_GLUE_URL);
 $categoryTress = $sprykerBridge->category()->getTrees();
 
 ```
-```json
+```
 //outputs
 
 {
