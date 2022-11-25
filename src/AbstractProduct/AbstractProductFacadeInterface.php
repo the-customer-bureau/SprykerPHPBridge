@@ -21,4 +21,6 @@ interface AbstractProductFacadeInterface
     public function getMetaDescription(string $sku): string;
 
     public function getRelated(string $sku): array;
+
+    public function getAbstractProductsByCategoryId(int $categoryId): array;
 }

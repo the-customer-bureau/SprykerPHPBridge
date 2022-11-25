@@ -9,6 +9,7 @@ use Engineered\HttpClient\HttpClientFacadeInterface;
 final class AbstractProduct
 {
     public const ABSTRACT_PRODUCT_SEARCH_ENDPOINT = 'catalog-search?q=';
+    public const ABSTRACT_PRODUCT_CATEGORY_SEARCH_ENDPOINT = 'catalog-search?category=';
     private const ABSTRACT_PRODUCTS_ENDPOINT = 'abstract-products';
     private const RELATED_ABSTRACT_PRODUCTS_ENDPOINT = 'related-products';
 
@@ -25,6 +26,11 @@ final class AbstractProduct
     public function get(string $sku): array
     {
         return $this->httpClient->get(self::ABSTRACT_PRODUCTS_ENDPOINT . '/' . $sku);
+    }
+
+    public function getAbstractProductsByCategoryId(int $categoryId): array
+    {
+        return $this->httpClient->get(self::ABSTRACT_PRODUCT_CATEGORY_SEARCH_ENDPOINT . $categoryId . '&include=abstract-products,concrete-products');
     }
 
     public function getRelated(string $sku): array
