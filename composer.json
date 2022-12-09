@@ -12,7 +12,7 @@
   ],
   "require": {
     "php": ">=8.0",
-    "gacela-project/gacela": "^0.28",
+    "gacela-project/gacela": "^0.32",
     "symfony/console": "^5.4",
     "symfony/http-client": "^6.0"
   },
@@ -20,8 +20,8 @@
     "roave/security-advisories": "dev-latest",
     "phpunit/phpunit": "^9.5",
     "friendsofphp/php-cs-fixer": "^3.13",
-    "phpstan/phpstan": "^1.8",
-    "vimeo/psalm": "^4.29"
+    "phpstan/phpstan": "^1.9",
+    "vimeo/psalm": "^5.1"
   },
   "config": {
     "platform": {
