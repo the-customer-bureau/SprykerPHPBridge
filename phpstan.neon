@@ -5,6 +5,7 @@ parameters:
     level: max
     paths:
         - %currentWorkingDirectory%/src/
+        - %currentWorkingDirectory%/tests/
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
 
@@ -14,3 +15,5 @@ parameters:
 
     gacela:
         modulesNamespace: Engineered
+        excludedNamespaces:
+            - EngineeredTests
