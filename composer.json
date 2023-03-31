@@ -12,16 +12,16 @@
   ],
   "require": {
     "php": ">=8.0",
-    "gacela-project/gacela": "^1.0",
+    "gacela-project/gacela": "^1.1",
     "symfony/console": "^5.4",
     "symfony/http-client": "^6.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
-    "phpunit/phpunit": "^9.5",
-    "friendsofphp/php-cs-fixer": "^3.13",
-    "phpstan/phpstan": "^1.9",
-    "vimeo/psalm": "^5.1",
+    "phpunit/phpunit": "^9.6",
+    "friendsofphp/php-cs-fixer": "^3.15",
+    "phpstan/phpstan": "^1.10",
+    "vimeo/psalm": "^5.9",
     "gacela-project/phpstan-extension": "^0.3",
     "symfony/var-dumper": "^6.0"
   },
