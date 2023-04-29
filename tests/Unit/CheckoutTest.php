@@ -14,7 +14,7 @@ class CheckoutTest extends TestCase
     public function test_the_post_data_can_be_created(): void
     {
         $httpClientFacade = $this->createMock(HttpClientFacadeInterface::class);
-//        $httpClientFacade->method('getProtected')->willReturn($this->httpClientResponse());
+        //        $httpClientFacade->method('getProtected')->willReturn($this->httpClientResponse());
         $checkout = new Checkout($httpClientFacade);
 
         $postData = $checkout->buildCheckoutPostData('123-456-789', $this->getCustomerData(), $this->getBillingAddressData(), $this->getPaymentsData(), $this->getShipmentsData());

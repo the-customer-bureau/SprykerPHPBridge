@@ -11,5 +11,5 @@ interface WishlistFacadeInterface
     public function get(string $wishlistId, string $bearerToken): array;
     public function getList(string $bearerToken): array;
     public function getName(string $wishlistId, string $bearerToken): string;
-//    public function getItems(string $wishlistId, string $bearerToken): array;
+    //    public function getItems(string $wishlistId, string $bearerToken): array;
 }
