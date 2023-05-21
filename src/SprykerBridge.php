@@ -10,24 +10,50 @@ use Gacela\Framework\Gacela;
 
 final class SprykerBridge
 {
-    public static function create(
-        string $glueUrl,
-        string $currency = 'EUR',
-        string $store = 'DE'
-    ): SprykerBridgeFacade {
-        $configKeyValues = [
-            'GLUE_API_URL' => $glueUrl,
-            'GLUE_CURRENCY' => $currency,
-            'GLUE_STORE' => $store,
-        ];
+    private static ?self $instance = null;
 
-        $appRootDir = getcwd() ?: __DIR__ . '/..';
+    /**
+     * @param array{
+     *   GLUE_API_URL?: string,
+     *   GLUE_CURRENCY?: string,
+     *   GLUE_STORE?: string,
+     *   ROOT_DIR?: string,
+     * } $configKeyValues
+     */
+    public function __construct(array $configKeyValues = [])
+    {
+        $this->gacelaBootstrap($configKeyValues);
+    }
 
-        Gacela::bootstrap($appRootDir, static function (GacelaConfig $config) use ($configKeyValues): void {
-            $config->enableFileCache();
-            $config->addAppConfigKeyValues($configKeyValues);
-        });
+    public static function create(string $glueUrl, string $currency = 'EUR', string $store = 'DE'): SprykerBridgeFacade
+    {
+        if (self::$instance === null) {
+            $configKeyValues = [
+                'GLUE_API_URL' => $glueUrl,
+                'GLUE_CURRENCY' => $currency,
+                'GLUE_STORE' => $store,
+                'ROOT_DIR' => getcwd() ?: __DIR__ . '/..',
+            ];
+            self::$instance = new self($configKeyValues);
+        }
 
+        return self::$instance->facade();
+    }
+
+    public function facade(): SprykerBridgeFacade
+    {
         return new SprykerBridgeFacade();
+    }
+
+    private function gacelaBootstrap(array $configKeyValues): void
+    {
+        Gacela::bootstrap(
+            $configKeyValues['ROOT_DIR'] ?? (getcwd() ?: __DIR__ . '/..'),
+            static function (GacelaConfig $config) use ($configKeyValues): void {
+                $config
+                    ->enableFileCache()
+                    ->addAppConfigKeyValues($configKeyValues);
+            }
+        );
     }
 }
