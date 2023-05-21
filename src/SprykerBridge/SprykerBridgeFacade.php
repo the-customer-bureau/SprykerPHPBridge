@@ -13,7 +13,6 @@ use Engineered\ConcreteProduct\ConcreteProductFacadeInterface;
 use Engineered\Customer\CustomerFacadeInterface;
 use Engineered\Orders\OrdersFacadeInterface;
 use Engineered\Wishlist\WishlistFacadeInterface;
-
 use Gacela\Framework\AbstractFacade;
 
 /**
@@ -60,6 +59,7 @@ final class SprykerBridgeFacade extends AbstractFacade
     {
         return $this->getFactory()->getOrdersFacade();
     }
+
     public function checkout(): CheckoutFacadeInterface
     {
         return $this->getFactory()->getCheckoutFacade();
