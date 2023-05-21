@@ -20,6 +20,7 @@ class SprykerBridge
         ];
 
         Gacela::bootstrap(__DIR__, static function (GacelaConfig $config) use ($configKeyValues): void {
+            $config->enableFileCache();
             $config->addAppConfigKeyValues($configKeyValues);
         });
 
