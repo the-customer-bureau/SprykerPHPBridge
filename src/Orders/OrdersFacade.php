@@ -13,6 +13,8 @@ final class OrdersFacade extends AbstractFacade implements OrdersFacadeInterface
 {
     public function getCustomerOrders(string $customerId, string $bearerToken): array
     {
-        return $this->getFactory()->createOrders()->get($customerId, $bearerToken);
+        return $this->getFactory()
+            ->createOrders()
+            ->get($customerId, $bearerToken);
     }
 }
