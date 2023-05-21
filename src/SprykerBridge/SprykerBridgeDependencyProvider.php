@@ -13,7 +13,6 @@ use Engineered\ConcreteProduct\ConcreteProductFacade;
 use Engineered\Customer\CustomerFacade;
 use Engineered\Orders\OrdersFacade;
 use Engineered\Wishlist\WishlistFacade;
-
 use Gacela\Framework\AbstractDependencyProvider;
 use Gacela\Framework\Container\Container;
 
@@ -46,9 +45,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_AUTH,
-            static function (Container $container) {
-                return $container->getLocator()->get(AuthFacade::class);
-            }
+            static fn () => $container->getLocator()->get(AuthFacade::class)
         );
     }
 
@@ -56,9 +53,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_CART,
-            static function (Container $container) {
-                return $container->getLocator()->get(CartFacade::class);
-            }
+            static fn () => $container->getLocator()->get(CartFacade::class)
         );
     }
 
@@ -66,9 +61,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_CUSTOMER,
-            static function (Container $container) {
-                return $container->getLocator()->get(CustomerFacade::class);
-            }
+            static fn () => $container->getLocator()->get(CustomerFacade::class)
         );
     }
 
@@ -76,9 +69,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_ABSTRACT_PRODUCT,
-            static function (Container $container) {
-                return $container->getLocator()->get(AbstractProductFacade::class);
-            }
+            static fn () => $container->getLocator()->get(AbstractProductFacade::class)
         );
     }
 
@@ -86,9 +77,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_CONCRETE_PRODUCT,
-            static function (Container $container) {
-                return $container->getLocator()->get(ConcreteProductFacade::class);
-            }
+            static fn () => $container->getLocator()->get(ConcreteProductFacade::class)
         );
     }
 
@@ -96,9 +85,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_CATEGORY,
-            static function (Container $container) {
-                return $container->getLocator()->get(CategoryFacade::class);
-            }
+            static fn () => $container->getLocator()->get(CategoryFacade::class)
         );
     }
 
@@ -106,9 +93,7 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_WISHLIST,
-            static function (Container $container) {
-                return $container->getLocator()->get(WishlistFacade::class);
-            }
+            static fn () => $container->getLocator()->get(WishlistFacade::class)
         );
     }
 
@@ -116,18 +101,15 @@ final class SprykerBridgeDependencyProvider extends AbstractDependencyProvider
     {
         $container->set(
             self::FACADE_ORDERS,
-            static function (Container $container) {
-                return $container->getLocator()->get(OrdersFacade::class);
-            }
+            static fn () => $container->getLocator()->get(OrdersFacade::class)
         );
     }
+
     private function addCheckoutFacade(Container $container): void
     {
         $container->set(
             self::FACADE_CHECKOUT,
-            static function (Container $container) {
-                return $container->getLocator()->get(CheckoutFacade::class);
-            }
+            static fn () => $container->getLocator()->get(CheckoutFacade::class)
         );
     }
 }
