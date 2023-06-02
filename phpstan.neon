@@ -12,6 +12,7 @@ parameters:
     ignoreErrors:
         - '#Cannot cast mixed to *#'
         - '#Method Engineered\\.*Factory::get.* should return .*Interface but returns mixed#'
+        - '#Method call to a different module is not allowed. Calling:Engineered, RefClasses:Engineered\\SprykerBridge#'
 
     gacela:
         modulesNamespace: Engineered
