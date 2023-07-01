@@ -46,8 +46,8 @@ final class WishlistFacade extends AbstractFacade implements WishlistFacadeInter
             ->getName($wishlistId, $bearerToken);
     }
 
-//    public function getItems(string $wishlistId, string $bearerToken): array
-//    {
-//        return $this->getFactory()->createWishlist()->getItems($wishlistId, $bearerToken);
-//    }
+    //    public function getItems(string $wishlistId, string $bearerToken): array
+    //    {
+    //        return $this->getFactory()->createWishlist()->getItems($wishlistId, $bearerToken);
+    //    }
 }
